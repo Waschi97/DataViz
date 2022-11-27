@@ -3,13 +3,25 @@
 
 **Dieses Notebook wird direkt von github geladen:**
 
-<https://github.com/julianhesse/julianhesse.github.io/blob/main/first_design.sb>
+<https://github.com/Waschi97/DataViz/tree/main/first_design.sb>
 
 Dieses Notebook läuft direkt im Browser und braucht keine serverseitige Installation.
 # %%--- [markdown]
 # properties:
 #   locked: true
 # ---%%
+Wir hatten in der ersten Woche ein wenig Zeitprobleme und konnten deswegen noch nicht ernsthaft mit dem Starboard beginnen.
+
+Wir haben allerdings schon die XLS Datein in CSV umgewandelt (zu sehen im GitHub) und über das Preprocessing gesprochen.
+
+Für dieses steht an:
+
+- [ ] CSV einlesen und in eine sinnvolle Datenstruktur integrieren
+- [ ] aus Adressdaten Bezirke ableiten
+- [ ] in den Besucherdaten Besucher und Besucherinnen zusammenfassen
+- [ ] Adress- und Besucherdaten kombinieren
+- [ ] verschiedene Bucket-Sizes für die Besucherdaten ausprobieren
+
 \
 
 # %% [javascript]
