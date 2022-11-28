@@ -1,0 +1,1422 @@
+[
+  {
+    "PLZ": 10115,
+    "Stadtteil": "Mitte"
+  },
+  {
+    "PLZ": 10117,
+    "Stadtteil": "Mitte"
+  },
+  {
+    "PLZ": 10119,
+    "Stadtteil": "Mitte"
+  },
+  {
+    "PLZ": 10119,
+    "Stadtteil": "Pankow"
+  },
+  {
+    "PLZ": 10178,
+    "Stadtteil": "Mitte"
+  },
+  {
+    "PLZ": 10179,
+    "Stadtteil": "Mitte"
+  },
+  {
+    "PLZ": 10243,
+    "Stadtteil": "Friedrichshain-Kreuzberg"
+  },
+  {
+    "PLZ": 10245,
+    "Stadtteil": "Friedrichshain-Kreuzberg"
+  },
+  {
+    "PLZ": 10247,
+    "Stadtteil": "Pankow"
+  },
+  {
+    "PLZ": 10247,
+    "Stadtteil": "Friedrichshain-Kreuzberg"
+  },
+  {
+    "PLZ": 10249,
+    "Stadtteil": "Pankow"
+  },
+  {
+    "PLZ": 10249,
+    "Stadtteil": "Friedrichshain-Kreuzberg"
+  },
+  {
+    "PLZ": 10315,
+    "Stadtteil": "Lichtenberg"
+  },
+  {
+    "PLZ": 10315,
+    "Stadtteil": "Lichtenberg"
+  },
+  {
+    "PLZ": 10317,
+    "Stadtteil": "Lichtenberg"
+  },
+  {
+    "PLZ": 10317,
+    "Stadtteil": "Lichtenberg"
+  },
+  {
+    "PLZ": 10317,
+    "Stadtteil": "Lichtenberg"
+  },
+  {
+    "PLZ": 10318,
+    "Stadtteil": "Lichtenberg"
+  },
+  {
+    "PLZ": 10319,
+    "Stadtteil": "Lichtenberg"
+  },
+  {
+    "PLZ": 10365,
+    "Stadtteil": "Lichtenberg"
+  },
+  {
+    "PLZ": 10367,
+    "Stadtteil": "Lichtenberg"
+  },
+  {
+    "PLZ": 10367,
+    "Stadtteil": "Lichtenberg"
+  },
+  {
+    "PLZ": 10369,
+    "Stadtteil": "Lichtenberg"
+  },
+  {
+    "PLZ": 10369,
+    "Stadtteil": "Lichtenberg"
+  },
+  {
+    "PLZ": 10405,
+    "Stadtteil": "Pankow"
+  },
+  {
+    "PLZ": 10407,
+    "Stadtteil": "Pankow"
+  },
+  {
+    "PLZ": 10409,
+    "Stadtteil": "Pankow"
+  },
+  {
+    "PLZ": 10435,
+    "Stadtteil": "Mitte"
+  },
+  {
+    "PLZ": 10435,
+    "Stadtteil": "Pankow"
+  },
+  {
+    "PLZ": 10437,
+    "Stadtteil": "Pankow"
+  },
+  {
+    "PLZ": 10439,
+    "Stadtteil": "Pankow"
+  },
+  {
+    "PLZ": 10439,
+    "Stadtteil": "Pankow"
+  },
+  {
+    "PLZ": 10551,
+    "Stadtteil": "Mitte"
+  },
+  {
+    "PLZ": 10553,
+    "Stadtteil": "Mitte"
+  },
+  {
+    "PLZ": 10555,
+    "Stadtteil": "Mitte"
+  },
+  {
+    "PLZ": 10555,
+    "Stadtteil": "Mitte"
+  },
+  {
+    "PLZ": 10557,
+    "Stadtteil": "Mitte"
+  },
+  {
+    "PLZ": 10557,
+    "Stadtteil": "Mitte"
+  },
+  {
+    "PLZ": 10557,
+    "Stadtteil": "Mitte"
+  },
+  {
+    "PLZ": 10559,
+    "Stadtteil": "Mitte"
+  },
+  {
+    "PLZ": 10585,
+    "Stadtteil": "Charlottenburg-Wilmersdorf"
+  },
+  {
+    "PLZ": 10587,
+    "Stadtteil": "Charlottenburg-Wilmersdorf"
+  },
+  {
+    "PLZ": 10589,
+    "Stadtteil": "Charlottenburg-Wilmersdorf"
+  },
+  {
+    "PLZ": 10589,
+    "Stadtteil": "Charlottenburg-Wilmersdorf"
+  },
+  {
+    "PLZ": 10623,
+    "Stadtteil": "Charlottenburg-Wilmersdorf"
+  },
+  {
+    "PLZ": 10625,
+    "Stadtteil": "Charlottenburg-Wilmersdorf"
+  },
+  {
+    "PLZ": 10627,
+    "Stadtteil": "Charlottenburg-Wilmersdorf"
+  },
+  {
+    "PLZ": 10629,
+    "Stadtteil": "Charlottenburg-Wilmersdorf"
+  },
+  {
+    "PLZ": 10707,
+    "Stadtteil": "Charlottenburg-Wilmersdorf"
+  },
+  {
+    "PLZ": 10707,
+    "Stadtteil": "Charlottenburg-Wilmersdorf"
+  },
+  {
+    "PLZ": 10709,
+    "Stadtteil": "Charlottenburg-Wilmersdorf"
+  },
+  {
+    "PLZ": 10709,
+    "Stadtteil": "Charlottenburg-Wilmersdorf"
+  },
+  {
+    "PLZ": 10709,
+    "Stadtteil": "Charlottenburg-Wilmersdorf"
+  },
+  {
+    "PLZ": 10711,
+    "Stadtteil": "Charlottenburg-Wilmersdorf"
+  },
+  {
+    "PLZ": 10711,
+    "Stadtteil": "Charlottenburg-Wilmersdorf"
+  },
+  {
+    "PLZ": 10711,
+    "Stadtteil": "Charlottenburg-Wilmersdorf"
+  },
+  {
+    "PLZ": 10713,
+    "Stadtteil": "Charlottenburg-Wilmersdorf"
+  },
+  {
+    "PLZ": 10713,
+    "Stadtteil": "Charlottenburg-Wilmersdorf"
+  },
+  {
+    "PLZ": 10715,
+    "Stadtteil": "Charlottenburg-Wilmersdorf"
+  },
+  {
+    "PLZ": 10717,
+    "Stadtteil": "Charlottenburg-Wilmersdorf"
+  },
+  {
+    "PLZ": 10719,
+    "Stadtteil": "Charlottenburg-Wilmersdorf"
+  },
+  {
+    "PLZ": 10719,
+    "Stadtteil": "Charlottenburg-Wilmersdorf"
+  },
+  {
+    "PLZ": 10777,
+    "Stadtteil": "Charlottenburg-Wilmersdorf"
+  },
+  {
+    "PLZ": 10777,
+    "Stadtteil": "Tempelhof-Schoeneberg"
+  },
+  {
+    "PLZ": 10779,
+    "Stadtteil": "Charlottenburg-Wilmersdorf"
+  },
+  {
+    "PLZ": 10779,
+    "Stadtteil": "Tempelhof-Schoeneberg"
+  },
+  {
+    "PLZ": 10781,
+    "Stadtteil": "Tempelhof-Schoeneberg"
+  },
+  {
+    "PLZ": 10783,
+    "Stadtteil": "Tempelhof-Schoeneberg"
+  },
+  {
+    "PLZ": 10785,
+    "Stadtteil": "Mitte"
+  },
+  {
+    "PLZ": 10785,
+    "Stadtteil": "Tempelhof-Schoeneberg"
+  },
+  {
+    "PLZ": 10785,
+    "Stadtteil": "Friedrichshain-Kreuzberg"
+  },
+  {
+    "PLZ": 10787,
+    "Stadtteil": "Mitte"
+  },
+  {
+    "PLZ": 10787,
+    "Stadtteil": "Charlottenburg-Wilmersdorf"
+  },
+  {
+    "PLZ": 10787,
+    "Stadtteil": "Tempelhof-Schoeneberg"
+  },
+  {
+    "PLZ": 10789,
+    "Stadtteil": "Charlottenburg-Wilmersdorf"
+  },
+  {
+    "PLZ": 10789,
+    "Stadtteil": "Charlottenburg-Wilmersdorf"
+  },
+  {
+    "PLZ": 10789,
+    "Stadtteil": "Tempelhof-Schoeneberg"
+  },
+  {
+    "PLZ": 10823,
+    "Stadtteil": "Tempelhof-Schoeneberg"
+  },
+  {
+    "PLZ": 10825,
+    "Stadtteil": "Charlottenburg-Wilmersdorf"
+  },
+  {
+    "PLZ": 10825,
+    "Stadtteil": "Tempelhof-Schoeneberg"
+  },
+  {
+    "PLZ": 10827,
+    "Stadtteil": "Tempelhof-Schoeneberg"
+  },
+  {
+    "PLZ": 10827,
+    "Stadtteil": "Tempelhof-Schoeneberg"
+  },
+  {
+    "PLZ": 10829,
+    "Stadtteil": "Tempelhof-Schoeneberg"
+  },
+  {
+    "PLZ": 10961,
+    "Stadtteil": "Friedrichshain-Kreuzberg"
+  },
+  {
+    "PLZ": 10963,
+    "Stadtteil": "Mitte"
+  },
+  {
+    "PLZ": 10963,
+    "Stadtteil": "Friedrichshain-Kreuzberg"
+  },
+  {
+    "PLZ": 10965,
+    "Stadtteil": "Tempelhof-Schoeneberg"
+  },
+  {
+    "PLZ": 10965,
+    "Stadtteil": "Friedrichshain-Kreuzberg"
+  },
+  {
+    "PLZ": 10965,
+    "Stadtteil": "Neukoelln"
+  },
+  {
+    "PLZ": 10965,
+    "Stadtteil": "Tempelhof-Schoeneberg"
+  },
+  {
+    "PLZ": 10967,
+    "Stadtteil": "Friedrichshain-Kreuzberg"
+  },
+  {
+    "PLZ": 10967,
+    "Stadtteil": "Neukoelln"
+  },
+  {
+    "PLZ": 10969,
+    "Stadtteil": "Friedrichshain-Kreuzberg"
+  },
+  {
+    "PLZ": 10997,
+    "Stadtteil": "Friedrichshain-Kreuzberg"
+  },
+  {
+    "PLZ": 10999,
+    "Stadtteil": "Friedrichshain-Kreuzberg"
+  },
+  {
+    "PLZ": 12043,
+    "Stadtteil": "Neukoelln"
+  },
+  {
+    "PLZ": 12045,
+    "Stadtteil": "Neukoelln"
+  },
+  {
+    "PLZ": 12047,
+    "Stadtteil": "Neukoelln"
+  },
+  {
+    "PLZ": 12049,
+    "Stadtteil": "Neukoelln"
+  },
+  {
+    "PLZ": 12051,
+    "Stadtteil": "Neukoelln"
+  },
+  {
+    "PLZ": 12053,
+    "Stadtteil": "Neukoelln"
+  },
+  {
+    "PLZ": 12055,
+    "Stadtteil": "Neukoelln"
+  },
+  {
+    "PLZ": 12057,
+    "Stadtteil": "Neukoelln"
+  },
+  {
+    "PLZ": 12059,
+    "Stadtteil": "Neukoelln"
+  },
+  {
+    "PLZ": 12099,
+    "Stadtteil": "Neukoelln"
+  },
+  {
+    "PLZ": 12099,
+    "Stadtteil": "Tempelhof-Schoeneberg"
+  },
+  {
+    "PLZ": 12099,
+    "Stadtteil": "Tempelhof-Schoeneberg"
+  },
+  {
+    "PLZ": 12099,
+    "Stadtteil": "Neukoelln"
+  },
+  {
+    "PLZ": 12101,
+    "Stadtteil": "Tempelhof-Schoeneberg"
+  },
+  {
+    "PLZ": 12101,
+    "Stadtteil": "Tempelhof-Schoeneberg"
+  },
+  {
+    "PLZ": 12103,
+    "Stadtteil": "Tempelhof-Schoeneberg"
+  },
+  {
+    "PLZ": 12103,
+    "Stadtteil": "Tempelhof-Schoeneberg"
+  },
+  {
+    "PLZ": 12103,
+    "Stadtteil": "Tempelhof-Schoeneberg"
+  },
+  {
+    "PLZ": 12105,
+    "Stadtteil": "Tempelhof-Schoeneberg"
+  },
+  {
+    "PLZ": 12105,
+    "Stadtteil": "Tempelhof-Schoeneberg"
+  },
+  {
+    "PLZ": 12105,
+    "Stadtteil": "Tempelhof-Schoeneberg"
+  },
+  {
+    "PLZ": 12107,
+    "Stadtteil": "Tempelhof-Schoeneberg"
+  },
+  {
+    "PLZ": 12107,
+    "Stadtteil": "Tempelhof-Schoeneberg"
+  },
+  {
+    "PLZ": 12107,
+    "Stadtteil": "Tempelhof-Schoeneberg"
+  },
+  {
+    "PLZ": 12107,
+    "Stadtteil": "Neukoelln"
+  },
+  {
+    "PLZ": 12109,
+    "Stadtteil": "Tempelhof-Schoeneberg"
+  },
+  {
+    "PLZ": 12109,
+    "Stadtteil": "Tempelhof-Schoeneberg"
+  },
+  {
+    "PLZ": 12157,
+    "Stadtteil": "Tempelhof-Schoeneberg"
+  },
+  {
+    "PLZ": 12157,
+    "Stadtteil": "Steglitz-Zehlendorf"
+  },
+  {
+    "PLZ": 12159,
+    "Stadtteil": "Tempelhof-Schoeneberg"
+  },
+  {
+    "PLZ": 12159,
+    "Stadtteil": "Tempelhof-Schoeneberg"
+  },
+  {
+    "PLZ": 12161,
+    "Stadtteil": "Tempelhof-Schoeneberg"
+  },
+  {
+    "PLZ": 12161,
+    "Stadtteil": "Steglitz-Zehlendorf"
+  },
+  {
+    "PLZ": 12163,
+    "Stadtteil": "Tempelhof-Schoeneberg"
+  },
+  {
+    "PLZ": 12163,
+    "Stadtteil": "Steglitz-Zehlendorf"
+  },
+  {
+    "PLZ": 12165,
+    "Stadtteil": "Steglitz-Zehlendorf"
+  },
+  {
+    "PLZ": 12167,
+    "Stadtteil": "Steglitz-Zehlendorf"
+  },
+  {
+    "PLZ": 12169,
+    "Stadtteil": "Steglitz-Zehlendorf"
+  },
+  {
+    "PLZ": 12203,
+    "Stadtteil": "Steglitz-Zehlendorf"
+  },
+  {
+    "PLZ": 12205,
+    "Stadtteil": "Steglitz-Zehlendorf"
+  },
+  {
+    "PLZ": 12207,
+    "Stadtteil": "Steglitz-Zehlendorf"
+  },
+  {
+    "PLZ": 12209,
+    "Stadtteil": "Steglitz-Zehlendorf"
+  },
+  {
+    "PLZ": 12247,
+    "Stadtteil": "Steglitz-Zehlendorf"
+  },
+  {
+    "PLZ": 12247,
+    "Stadtteil": "Steglitz-Zehlendorf"
+  },
+  {
+    "PLZ": 12249,
+    "Stadtteil": "Tempelhof-Schoeneberg"
+  },
+  {
+    "PLZ": 12249,
+    "Stadtteil": "Steglitz-Zehlendorf"
+  },
+  {
+    "PLZ": 12277,
+    "Stadtteil": "Tempelhof-Schoeneberg"
+  },
+  {
+    "PLZ": 12277,
+    "Stadtteil": "Tempelhof-Schoeneberg"
+  },
+  {
+    "PLZ": 12279,
+    "Stadtteil": "Tempelhof-Schoeneberg"
+  },
+  {
+    "PLZ": 12279,
+    "Stadtteil": "Tempelhof-Schoeneberg"
+  },
+  {
+    "PLZ": 12305,
+    "Stadtteil": "Tempelhof-Schoeneberg"
+  },
+  {
+    "PLZ": 12305,
+    "Stadtteil": "Neukoelln"
+  },
+  {
+    "PLZ": 12307,
+    "Stadtteil": "Tempelhof-Schoeneberg"
+  },
+  {
+    "PLZ": 12307,
+    "Stadtteil": "Tempelhof-Schoeneberg"
+  },
+  {
+    "PLZ": 12309,
+    "Stadtteil": "Tempelhof-Schoeneberg"
+  },
+  {
+    "PLZ": 12347,
+    "Stadtteil": "Neukoelln"
+  },
+  {
+    "PLZ": 12349,
+    "Stadtteil": "Neukoelln"
+  },
+  {
+    "PLZ": 12349,
+    "Stadtteil": "Neukoelln"
+  },
+  {
+    "PLZ": 12351,
+    "Stadtteil": "Neukoelln"
+  },
+  {
+    "PLZ": 12351,
+    "Stadtteil": "Neukoelln"
+  },
+  {
+    "PLZ": 12351,
+    "Stadtteil": "Neukoelln"
+  },
+  {
+    "PLZ": 12351,
+    "Stadtteil": "Neukoelln"
+  },
+  {
+    "PLZ": 12353,
+    "Stadtteil": "Neukoelln"
+  },
+  {
+    "PLZ": 12353,
+    "Stadtteil": "Neukoelln"
+  },
+  {
+    "PLZ": 12353,
+    "Stadtteil": "Neukoelln"
+  },
+  {
+    "PLZ": 12355,
+    "Stadtteil": "Neukoelln"
+  },
+  {
+    "PLZ": 12357,
+    "Stadtteil": "Neukoelln"
+  },
+  {
+    "PLZ": 12357,
+    "Stadtteil": "Neukoelln"
+  },
+  {
+    "PLZ": 12357,
+    "Stadtteil": "Neukoelln"
+  },
+  {
+    "PLZ": 12359,
+    "Stadtteil": "Neukoelln"
+  },
+  {
+    "PLZ": 12359,
+    "Stadtteil": "Neukoelln"
+  },
+  {
+    "PLZ": 12359,
+    "Stadtteil": "Neukoelln"
+  },
+  {
+    "PLZ": 12435,
+    "Stadtteil": "Treptow-Koepenick"
+  },
+  {
+    "PLZ": 12435,
+    "Stadtteil": "Treptow-Koepenick"
+  },
+  {
+    "PLZ": 12437,
+    "Stadtteil": "Treptow-Koepenick"
+  },
+  {
+    "PLZ": 12437,
+    "Stadtteil": "Treptow-Koepenick"
+  },
+  {
+    "PLZ": 12437,
+    "Stadtteil": "Treptow-Koepenick"
+  },
+  {
+    "PLZ": 12437,
+    "Stadtteil": "Treptow-Koepenick"
+  },
+  {
+    "PLZ": 12439,
+    "Stadtteil": "Treptow-Koepenick"
+  },
+  {
+    "PLZ": 12459,
+    "Stadtteil": "Treptow-Koepenick"
+  },
+  {
+    "PLZ": 12459,
+    "Stadtteil": "Treptow-Koepenick"
+  },
+  {
+    "PLZ": 12487,
+    "Stadtteil": "Treptow-Koepenick"
+  },
+  {
+    "PLZ": 12487,
+    "Stadtteil": "Treptow-Koepenick"
+  },
+  {
+    "PLZ": 12487,
+    "Stadtteil": "Treptow-Koepenick"
+  },
+  {
+    "PLZ": 12489,
+    "Stadtteil": "Treptow-Koepenick"
+  },
+  {
+    "PLZ": 12489,
+    "Stadtteil": "Treptow-Koepenick"
+  },
+  {
+    "PLZ": 12524,
+    "Stadtteil": "Treptow-Koepenick"
+  },
+  {
+    "PLZ": 12526,
+    "Stadtteil": "Treptow-Koepenick"
+  },
+  {
+    "PLZ": 12527,
+    "Stadtteil": "Treptow-Koepenick"
+  },
+  {
+    "PLZ": 12527,
+    "Stadtteil": "Treptow-Koepenick"
+  },
+  {
+    "PLZ": 12555,
+    "Stadtteil": "Treptow-Koepenick"
+  },
+  {
+    "PLZ": 12557,
+    "Stadtteil": "Treptow-Koepenick"
+  },
+  {
+    "PLZ": 12559,
+    "Stadtteil": "Treptow-Koepenick"
+  },
+  {
+    "PLZ": 12559,
+    "Stadtteil": "Treptow-Koepenick"
+  },
+  {
+    "PLZ": 12587,
+    "Stadtteil": "Treptow-Koepenick"
+  },
+  {
+    "PLZ": 12587,
+    "Stadtteil": "Treptow-Koepenick"
+  },
+  {
+    "PLZ": 12589,
+    "Stadtteil": "Treptow-Koepenick"
+  },
+  {
+    "PLZ": 12619,
+    "Stadtteil": "Marzahn-Hellersdorf"
+  },
+  {
+    "PLZ": 12619,
+    "Stadtteil": "Marzahn-Hellersdorf"
+  },
+  {
+    "PLZ": 12621,
+    "Stadtteil": "Marzahn-Hellersdorf"
+  },
+  {
+    "PLZ": 12621,
+    "Stadtteil": "Marzahn-Hellersdorf"
+  },
+  {
+    "PLZ": 12623,
+    "Stadtteil": "Marzahn-Hellersdorf"
+  },
+  {
+    "PLZ": 12623,
+    "Stadtteil": "Marzahn-Hellersdorf"
+  },
+  {
+    "PLZ": 12627,
+    "Stadtteil": "Marzahn-Hellersdorf"
+  },
+  {
+    "PLZ": 12629,
+    "Stadtteil": "Marzahn-Hellersdorf"
+  },
+  {
+    "PLZ": 12679,
+    "Stadtteil": "Marzahn-Hellersdorf"
+  },
+  {
+    "PLZ": 12681,
+    "Stadtteil": "Marzahn-Hellersdorf"
+  },
+  {
+    "PLZ": 12683,
+    "Stadtteil": "Marzahn-Hellersdorf"
+  },
+  {
+    "PLZ": 12685,
+    "Stadtteil": "Marzahn-Hellersdorf"
+  },
+  {
+    "PLZ": 12687,
+    "Stadtteil": "Marzahn-Hellersdorf"
+  },
+  {
+    "PLZ": 12689,
+    "Stadtteil": "Marzahn-Hellersdorf"
+  },
+  {
+    "PLZ": 13051,
+    "Stadtteil": "Lichtenberg"
+  },
+  {
+    "PLZ": 13051,
+    "Stadtteil": "Lichtenberg"
+  },
+  {
+    "PLZ": 13051,
+    "Stadtteil": "Lichtenberg"
+  },
+  {
+    "PLZ": 13051,
+    "Stadtteil": "Lichtenberg"
+  },
+  {
+    "PLZ": 13051,
+    "Stadtteil": "Pankow"
+  },
+  {
+    "PLZ": 13051,
+    "Stadtteil": "Pankow"
+  },
+  {
+    "PLZ": 13053,
+    "Stadtteil": "Lichtenberg"
+  },
+  {
+    "PLZ": 13053,
+    "Stadtteil": "Lichtenberg"
+  },
+  {
+    "PLZ": 13055,
+    "Stadtteil": "Lichtenberg"
+  },
+  {
+    "PLZ": 13057,
+    "Stadtteil": "Lichtenberg"
+  },
+  {
+    "PLZ": 13057,
+    "Stadtteil": "Lichtenberg"
+  },
+  {
+    "PLZ": 13059,
+    "Stadtteil": "Lichtenberg"
+  },
+  {
+    "PLZ": 13059,
+    "Stadtteil": "Lichtenberg"
+  },
+  {
+    "PLZ": 13086,
+    "Stadtteil": "Pankow"
+  },
+  {
+    "PLZ": 13088,
+    "Stadtteil": "Pankow"
+  },
+  {
+    "PLZ": 13088,
+    "Stadtteil": "Pankow"
+  },
+  {
+    "PLZ": 13088,
+    "Stadtteil": "Pankow"
+  },
+  {
+    "PLZ": 13089,
+    "Stadtteil": "Pankow"
+  },
+  {
+    "PLZ": 13125,
+    "Stadtteil": "Pankow"
+  },
+  {
+    "PLZ": 13125,
+    "Stadtteil": "Pankow"
+  },
+  {
+    "PLZ": 13127,
+    "Stadtteil": "Pankow"
+  },
+  {
+    "PLZ": 13127,
+    "Stadtteil": "Pankow"
+  },
+  {
+    "PLZ": 13129,
+    "Stadtteil": "Pankow"
+  },
+  {
+    "PLZ": 13129,
+    "Stadtteil": "Pankow"
+  },
+  {
+    "PLZ": 13129,
+    "Stadtteil": "Pankow"
+  },
+  {
+    "PLZ": 13129,
+    "Stadtteil": "Pankow"
+  },
+  {
+    "PLZ": 13156,
+    "Stadtteil": "Pankow"
+  },
+  {
+    "PLZ": 13156,
+    "Stadtteil": "Pankow"
+  },
+  {
+    "PLZ": 13156,
+    "Stadtteil": "Pankow"
+  },
+  {
+    "PLZ": 13158,
+    "Stadtteil": "Pankow"
+  },
+  {
+    "PLZ": 13158,
+    "Stadtteil": "Pankow"
+  },
+  {
+    "PLZ": 13158,
+    "Stadtteil": "Pankow"
+  },
+  {
+    "PLZ": 13159,
+    "Stadtteil": "Pankow"
+  },
+  {
+    "PLZ": 13187,
+    "Stadtteil": "Pankow"
+  },
+  {
+    "PLZ": 13189,
+    "Stadtteil": "Pankow"
+  },
+  {
+    "PLZ": 13347,
+    "Stadtteil": "Mitte"
+  },
+  {
+    "PLZ": 13347,
+    "Stadtteil": "Mitte"
+  },
+  {
+    "PLZ": 13349,
+    "Stadtteil": "Mitte"
+  },
+  {
+    "PLZ": 13351,
+    "Stadtteil": "Mitte"
+  },
+  {
+    "PLZ": 13353,
+    "Stadtteil": "Charlottenburg-Wilmersdorf"
+  },
+  {
+    "PLZ": 13353,
+    "Stadtteil": "Mitte"
+  },
+  {
+    "PLZ": 13353,
+    "Stadtteil": "Mitte"
+  },
+  {
+    "PLZ": 13355,
+    "Stadtteil": "Mitte"
+  },
+  {
+    "PLZ": 13357,
+    "Stadtteil": "Mitte"
+  },
+  {
+    "PLZ": 13357,
+    "Stadtteil": "Mitte"
+  },
+  {
+    "PLZ": 13359,
+    "Stadtteil": "Mitte"
+  },
+  {
+    "PLZ": 13359,
+    "Stadtteil": "Mitte"
+  },
+  {
+    "PLZ": 13403,
+    "Stadtteil": "Reinickendorf"
+  },
+  {
+    "PLZ": 13403,
+    "Stadtteil": "Reinickendorf"
+  },
+  {
+    "PLZ": 13403,
+    "Stadtteil": "Reinickendorf"
+  },
+  {
+    "PLZ": 13405,
+    "Stadtteil": "Mitte"
+  },
+  {
+    "PLZ": 13405,
+    "Stadtteil": "Reinickendorf"
+  },
+  {
+    "PLZ": 13405,
+    "Stadtteil": "Reinickendorf"
+  },
+  {
+    "PLZ": 13407,
+    "Stadtteil": "Mitte"
+  },
+  {
+    "PLZ": 13407,
+    "Stadtteil": "Reinickendorf"
+  },
+  {
+    "PLZ": 13407,
+    "Stadtteil": "Reinickendorf"
+  },
+  {
+    "PLZ": 13409,
+    "Stadtteil": "Mitte"
+  },
+  {
+    "PLZ": 13409,
+    "Stadtteil": "Mitte"
+  },
+  {
+    "PLZ": 13409,
+    "Stadtteil": "Reinickendorf"
+  },
+  {
+    "PLZ": 13435,
+    "Stadtteil": "Reinickendorf"
+  },
+  {
+    "PLZ": 13435,
+    "Stadtteil": "Reinickendorf"
+  },
+  {
+    "PLZ": 13437,
+    "Stadtteil": "Reinickendorf"
+  },
+  {
+    "PLZ": 13437,
+    "Stadtteil": "Reinickendorf"
+  },
+  {
+    "PLZ": 13439,
+    "Stadtteil": "Reinickendorf"
+  },
+  {
+    "PLZ": 13439,
+    "Stadtteil": "Reinickendorf"
+  },
+  {
+    "PLZ": 13465,
+    "Stadtteil": "Reinickendorf"
+  },
+  {
+    "PLZ": 13465,
+    "Stadtteil": "Reinickendorf"
+  },
+  {
+    "PLZ": 13467,
+    "Stadtteil": "Reinickendorf"
+  },
+  {
+    "PLZ": 13469,
+    "Stadtteil": "Reinickendorf"
+  },
+  {
+    "PLZ": 13469,
+    "Stadtteil": "Reinickendorf"
+  },
+  {
+    "PLZ": 13469,
+    "Stadtteil": "Reinickendorf"
+  },
+  {
+    "PLZ": 13503,
+    "Stadtteil": "Reinickendorf"
+  },
+  {
+    "PLZ": 13503,
+    "Stadtteil": "Reinickendorf"
+  },
+  {
+    "PLZ": 13505,
+    "Stadtteil": "Reinickendorf"
+  },
+  {
+    "PLZ": 13505,
+    "Stadtteil": "Reinickendorf"
+  },
+  {
+    "PLZ": 13505,
+    "Stadtteil": "Reinickendorf"
+  },
+  {
+    "PLZ": 13507,
+    "Stadtteil": "Reinickendorf"
+  },
+  {
+    "PLZ": 13509,
+    "Stadtteil": "Reinickendorf"
+  },
+  {
+    "PLZ": 13509,
+    "Stadtteil": "Reinickendorf"
+  },
+  {
+    "PLZ": 13509,
+    "Stadtteil": "Reinickendorf"
+  },
+  {
+    "PLZ": 13509,
+    "Stadtteil": "Reinickendorf"
+  },
+  {
+    "PLZ": 13581,
+    "Stadtteil": "Spandau"
+  },
+  {
+    "PLZ": 13581,
+    "Stadtteil": "Spandau"
+  },
+  {
+    "PLZ": 13581,
+    "Stadtteil": "Spandau"
+  },
+  {
+    "PLZ": 13583,
+    "Stadtteil": "Spandau"
+  },
+  {
+    "PLZ": 13583,
+    "Stadtteil": "Spandau"
+  },
+  {
+    "PLZ": 13585,
+    "Stadtteil": "Spandau"
+  },
+  {
+    "PLZ": 13585,
+    "Stadtteil": "Spandau"
+  },
+  {
+    "PLZ": 13585,
+    "Stadtteil": "Spandau"
+  },
+  {
+    "PLZ": 13587,
+    "Stadtteil": "Spandau"
+  },
+  {
+    "PLZ": 13587,
+    "Stadtteil": "Spandau"
+  },
+  {
+    "PLZ": 13589,
+    "Stadtteil": "Spandau"
+  },
+  {
+    "PLZ": 13589,
+    "Stadtteil": "Spandau"
+  },
+  {
+    "PLZ": 13591,
+    "Stadtteil": "Spandau"
+  },
+  {
+    "PLZ": 13591,
+    "Stadtteil": "Spandau"
+  },
+  {
+    "PLZ": 13593,
+    "Stadtteil": "Spandau"
+  },
+  {
+    "PLZ": 13593,
+    "Stadtteil": "Spandau"
+  },
+  {
+    "PLZ": 13595,
+    "Stadtteil": "Spandau"
+  },
+  {
+    "PLZ": 13597,
+    "Stadtteil": "Spandau"
+  },
+  {
+    "PLZ": 13597,
+    "Stadtteil": "Spandau"
+  },
+  {
+    "PLZ": 13599,
+    "Stadtteil": "Reinickendorf"
+  },
+  {
+    "PLZ": 13599,
+    "Stadtteil": "Spandau"
+  },
+  {
+    "PLZ": 13599,
+    "Stadtteil": "Spandau"
+  },
+  {
+    "PLZ": 13627,
+    "Stadtteil": "Charlottenburg-Wilmersdorf"
+  },
+  {
+    "PLZ": 13627,
+    "Stadtteil": "Spandau"
+  },
+  {
+    "PLZ": 13629,
+    "Stadtteil": "Charlottenburg-Wilmersdorf"
+  },
+  {
+    "PLZ": 13629,
+    "Stadtteil": "Reinickendorf"
+  },
+  {
+    "PLZ": 13629,
+    "Stadtteil": "Spandau"
+  },
+  {
+    "PLZ": 14050,
+    "Stadtteil": "Charlottenburg-Wilmersdorf"
+  },
+  {
+    "PLZ": 14050,
+    "Stadtteil": "Charlottenburg-Wilmersdorf"
+  },
+  {
+    "PLZ": 14052,
+    "Stadtteil": "Spandau"
+  },
+  {
+    "PLZ": 14052,
+    "Stadtteil": "Charlottenburg-Wilmersdorf"
+  },
+  {
+    "PLZ": 14053,
+    "Stadtteil": "Charlottenburg-Wilmersdorf"
+  },
+  {
+    "PLZ": 14055,
+    "Stadtteil": "Charlottenburg-Wilmersdorf"
+  },
+  {
+    "PLZ": 14055,
+    "Stadtteil": "Charlottenburg-Wilmersdorf"
+  },
+  {
+    "PLZ": 14055,
+    "Stadtteil": "Charlottenburg-Wilmersdorf"
+  },
+  {
+    "PLZ": 14057,
+    "Stadtteil": "Charlottenburg-Wilmersdorf"
+  },
+  {
+    "PLZ": 14057,
+    "Stadtteil": "Charlottenburg-Wilmersdorf"
+  },
+  {
+    "PLZ": 14059,
+    "Stadtteil": "Charlottenburg-Wilmersdorf"
+  },
+  {
+    "PLZ": 14059,
+    "Stadtteil": "Charlottenburg-Wilmersdorf"
+  },
+  {
+    "PLZ": 14089,
+    "Stadtteil": "Spandau"
+  },
+  {
+    "PLZ": 14089,
+    "Stadtteil": "Spandau"
+  },
+  {
+    "PLZ": 14109,
+    "Stadtteil": "Steglitz-Zehlendorf"
+  },
+  {
+    "PLZ": 14109,
+    "Stadtteil": "Steglitz-Zehlendorf"
+  },
+  {
+    "PLZ": 14129,
+    "Stadtteil": "Steglitz-Zehlendorf"
+  },
+  {
+    "PLZ": 14129,
+    "Stadtteil": "Steglitz-Zehlendorf"
+  },
+  {
+    "PLZ": 14163,
+    "Stadtteil": "Steglitz-Zehlendorf"
+  },
+  {
+    "PLZ": 14163,
+    "Stadtteil": "Steglitz-Zehlendorf"
+  },
+  {
+    "PLZ": 14165,
+    "Stadtteil": "Steglitz-Zehlendorf"
+  },
+  {
+    "PLZ": 14167,
+    "Stadtteil": "Steglitz-Zehlendorf"
+  },
+  {
+    "PLZ": 14167,
+    "Stadtteil": "Steglitz-Zehlendorf"
+  },
+  {
+    "PLZ": 14169,
+    "Stadtteil": "Steglitz-Zehlendorf"
+  },
+  {
+    "PLZ": 14169,
+    "Stadtteil": "Steglitz-Zehlendorf"
+  },
+  {
+    "PLZ": 14169,
+    "Stadtteil": "Steglitz-Zehlendorf"
+  },
+  {
+    "PLZ": 14193,
+    "Stadtteil": "Charlottenburg-Wilmersdorf"
+  },
+  {
+    "PLZ": 14193,
+    "Stadtteil": "Steglitz-Zehlendorf"
+  },
+  {
+    "PLZ": 14193,
+    "Stadtteil": "Steglitz-Zehlendorf"
+  },
+  {
+    "PLZ": 14193,
+    "Stadtteil": "Charlottenburg-Wilmersdorf"
+  },
+  {
+    "PLZ": 14195,
+    "Stadtteil": "Charlottenburg-Wilmersdorf"
+  },
+  {
+    "PLZ": 14195,
+    "Stadtteil": "Charlottenburg-Wilmersdorf"
+  },
+  {
+    "PLZ": 14195,
+    "Stadtteil": "Steglitz-Zehlendorf"
+  },
+  {
+    "PLZ": 14195,
+    "Stadtteil": "Steglitz-Zehlendorf"
+  },
+  {
+    "PLZ": 14195,
+    "Stadtteil": "Steglitz-Zehlendorf"
+  },
+  {
+    "PLZ": 14195,
+    "Stadtteil": "Charlottenburg-Wilmersdorf"
+  },
+  {
+    "PLZ": 14197,
+    "Stadtteil": "Charlottenburg-Wilmersdorf"
+  },
+  {
+    "PLZ": 14197,
+    "Stadtteil": "Tempelhof-Schoeneberg"
+  },
+  {
+    "PLZ": 14199,
+    "Stadtteil": "Charlottenburg-Wilmersdorf"
+  },
+  {
+    "PLZ": 14199,
+    "Stadtteil": "Charlottenburg-Wilmersdorf"
+  },
+  {
+    "PLZ": 14199,
+    "Stadtteil": "Charlottenburg-Wilmersdorf"
+  }
+]
