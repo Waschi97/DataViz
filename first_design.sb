@@ -42,4 +42,99 @@ var stats_11_12_json = await resp.json();
 resp = await fetch(url_13_14);
 var stats_13_14_json = await resp.json();
 
+// console.log(stats_13_14_json);
+# %% [javascript]
 console.log(stats_13_14_json);
+console.log(zipcodes_json);
+console.log(names_json);
+
+VERBOSE = true;
+
+function addr2plz(addr) {
+  if(VERBOSE) {
+    console.log("Addr:" + addr);
+  }
+  if(addr == null) {
+    return null;
+  }
+
+  const trimmed = addr.replaceAll(/\s/g,'');
+  const commaPos = trimmed.indexOf(",");
+  if (commaPos == -1) {
+    return null;
+  }
+  return parseInt(trimmed.substring(commaPos + 1, commaPos + 6));
+}
+
+function name2addr(name) {
+  if(VERBOSE) {
+  	console.log("Name:" + name)
+  }
+  if(name == null) {
+    return null;
+  }
+  
+  const objects = names_json.filter(obj => obj["Institution"] == name);
+  
+  if(objects.length < 1) {
+    return null;
+  }
+  return objects[0]["Adresse"]; 
+}
+
+function plz2distr(plz) {
+  if(VERBOSE) {
+  console.log("PLZ:" + plz)
+  }
+  if(plz == null) {
+    return null;
+  }
+  
+  var objects = zipcodes_json.filter(obj => obj["PLZ"] == plz); 
+  
+  if(objects.length < 1) {
+    return null;
+  }
+  return objects[0]["Stadtteil"];
+}
+
+// Returns district from insitition name
+function name2distr(name) {
+  return plz2distr(addr2plz(name2addr(name)));
+}
+
+// Transforms our data into a dictionary, where the key is the district name 
+// and the the values are arrays that contain all facilities of that district
+// TODO:
+//  - Incorporate 11_12 dataset
+//  - Can we do something about so many names of the 11_12_dataset 
+//     not being matched in the names dataset?
+function districtTransform() {
+
+  var transformed = {};
+  
+  for(var i = 0; i < stats_13_14_json.length ; i++) {
+    
+    const obj = stats_13_14_json[i];
+    const name = obj["Institutionsname"];
+    
+    if(name == "") {
+      continue;
+    }
+    
+	const distr = name2distr(name);    
+    if (distr == null) {
+      continue;
+    }
+
+    if(!(distr in transformed)) {
+      transformed[distr] = [];
+    }
+
+    transformed[distr].push(obj);
+  }
+
+  return transformed;
+}
+
+districtTransform().length;
