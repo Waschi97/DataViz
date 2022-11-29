@@ -25,3 +25,21 @@ Für dieses steht an:
 \
 
 # %% [javascript]
+const url_11_12 = "https://raw.githubusercontent.com/Waschi97/DataViz/main/json_daten/besucherstatistik-2011_2012.json";
+const url_13_14 = "https://raw.githubusercontent.com/Waschi97/DataViz/main/json_daten/besucherstatistik-2013_2014.json";
+const url_names = "https://raw.githubusercontent.com/Waschi97/DataViz/main/json_daten/kultureinrichtungen_alle.json";
+const url_postcodes = "https://raw.githubusercontent.com/Waschi97/DataViz/main/json_daten/BerlinPLZ.json";
+
+var resp = await fetch(url_postcodes);
+var zipcodes_json = await resp.json();
+
+resp = await fetch(url_names);
+var names_json = await resp.json();
+
+resp = await fetch(url_11_12);
+var stats_11_12_json = await resp.json();
+
+resp = await fetch(url_13_14);
+var stats_13_14_json = await resp.json();
+
+console.log(stats_13_14_json);
