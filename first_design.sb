@@ -44,11 +44,7 @@ var stats_13_14_json = await resp.json();
 
 // console.log(stats_13_14_json);
 # %% [javascript]
-console.log(stats_13_14_json);
-console.log(zipcodes_json);
-console.log(names_json);
 
-VERBOSE = true;
 
 function addr2plz(addr) {
   if(VERBOSE) {
@@ -103,38 +99,79 @@ function name2distr(name) {
   return plz2distr(addr2plz(name2addr(name)));
 }
 
-// Transforms our data into a dictionary, where the key is the district name 
-// and the the values are arrays that contain all facilities of that district
 // TODO:
-//  - Incorporate 11_12 dataset
 //  - Can we do something about so many names of the 11_12_dataset 
 //     not being matched in the names dataset?
 function districtTransform() {
 
   var transformed = {};
+  const datasets = [stats_11_12_json, stats_13_14_json];
+  const years = [["2011", "2012"], ["2013", "2014"]];
   
-  for(var i = 0; i < stats_13_14_json.length ; i++) {
+  for(var k = 0; k < 2; k++)  {
     
-    const obj = stats_13_14_json[i];
-    const name = obj["Institutionsname"];
+    dataset = datasets[k];
+    var year__0 = years[k][0];
+    var year__1 = years[k][1];
     
-    if(name == "") {
-      continue;
-    }
+    for(var i = 0; i < dataset.length ; i++) {
     
-	const distr = name2distr(name);    
-    if (distr == null) {
-      continue;
-    }
+    	const obj = dataset[i];
+    	const name = obj["Institutionsname"];
+    
+    	if(name == "") {
+          continue;
+    	}
+    
+		const distr = name2distr(name);    
+    	if (distr == null) {
+      	  continue;
+    	}
 
-    if(!(distr in transformed)) {
-      transformed[distr] = [];
-    }
+    	if(!(distr in transformed)) {
+      	  transformed[distr] = {};
+    	}
+    
+        if(!(year__0 in transformed[distr])) {
+          transformed[distr][year__0] = [];
+        }
 
-    transformed[distr].push(obj);
+        if(!(year__1 in transformed[distr])) {
+          transformed[distr][year__1] = [];
+        }
+
+        var obj_1 = {};
+        var obj_2 = {};
+        
+        const keys__1 = Object.keys(obj).filter(key => key.includes("__1"));
+    	var nonConstantKeys = [];
+        
+        for(var j = 0; j < keys__1.length; j++) {
+          
+          const keyShort = keys__1[j].substring(0,  keys__1[j].indexOf("__1"));
+          
+          nonConstantKeys.push(keyShort);
+          nonConstantKeys.push(keys__1[j]);
+          
+          obj_1[keyShort] = obj[keyShort];
+          obj_2[keyShort] = obj[keys__1[j]];
+          
+        }
+    
+        const constantKeys = Object.keys(obj).filter(key => !nonConstantKeys.includes(key));
+        
+        for(var j = 0; j < constantKeys.length; j++) {
+          obj_1[constantKeys[j]] = obj[constantKeys[j]];
+          obj_2[constantKeys[j]] = obj[constantKeys[j]];
+        }
+        
+        transformed[distr][year__0].push(obj_1);
+        transformed[distr][year__1].push(obj_2);
+    
+ 	 }
   }
-
   return transformed;
 }
 
-districtTransform().length;
+VERBOSE = false
+console.log(districtTransform());
