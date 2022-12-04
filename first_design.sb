@@ -52,6 +52,7 @@ Lastly we combined the two informations into a well suited datastructure ready f
 # %%--- [javascript]
 # properties:
 #   top_hidden: true
+#   run_on_load: true
 # ---%%
 const url_11_12 = "https://raw.githubusercontent.com/Waschi97/DataViz/main/json_daten/besucherstatistik-2011_2012.json";
 const url_13_14 = "https://raw.githubusercontent.com/Waschi97/DataViz/main/json_daten/besucherstatistik-2013_2014.json";
@@ -74,6 +75,7 @@ var stats_13_14_json = await resp.json();
 # %%--- [javascript]
 # properties:
 #   top_hidden: true
+#   run_on_load: true
 # ---%%
 
 
