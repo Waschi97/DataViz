@@ -42,14 +42,17 @@ All data is provided in .XLS format (Microsoft Excel). As this format is really 
 Before we can visualize the data we need to do some preprocessing.
 
 \
-First of all we strip the postcode from the adress of each facility and use it to order the facility into its district. As some postcodes appear in multiple different districts we needed to resolve these conflicts manually.
+First of all we strip the postcode from the adress of each facility and use it to order the facility into its district. As some postcodes overlap multiple different districts. For these cases we opted to count the facility as being “in” all the found districts. This decision arose from the motivation that facilities with a postcode spaning multiple districts should be availible for residence of these districts and therefore be counted for all of them.
 
 \
 Secondly the visitor information is itemized by a lot of different features; paying vs. non-paying, female vs. male, children vs. adults. We decided to not include this itemization and simply use the overall number of visitors disregarding their properties. The only split that remains is the seperation by year.
 
 \
 Lastly we combined the two informations into a well suited datastructure ready for plotting.
-# %% [javascript]
+# %%--- [javascript]
+# properties:
+#   top_hidden: true
+# ---%%
 const url_11_12 = "https://raw.githubusercontent.com/Waschi97/DataViz/main/json_daten/besucherstatistik-2011_2012.json";
 const url_13_14 = "https://raw.githubusercontent.com/Waschi97/DataViz/main/json_daten/besucherstatistik-2013_2014.json";
 const url_names = "https://raw.githubusercontent.com/Waschi97/DataViz/main/json_daten/kultureinrichtungen_alle.json";
@@ -68,7 +71,10 @@ resp = await fetch(url_13_14);
 var stats_13_14_json = await resp.json();
 
 // console.log(stats_13_14_json);
-# %% [javascript]
+# %%--- [javascript]
+# properties:
+#   top_hidden: true
+# ---%%
 
 
 function addr2plz(addr) {
