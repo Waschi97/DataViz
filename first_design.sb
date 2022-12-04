@@ -80,67 +80,67 @@ var stats_13_14_json = await resp.json();
 
 
 function addr2plz(addr) {
-  if(VERBOSE) {
-    console.log("Addr:" + addr);
-  }
-  if(addr == null) {
-    return null;
-  }
+    if (VERBOSE) {
+        console.log("Addr:" + addr);
+    }
+    if (addr == null) {
+        return null;
+    }
 
-  const trimmed = addr.replaceAll(/\s/g,'');
-  const commaPos = trimmed.indexOf(",");
-  if (commaPos == -1) {
-    return null;
-  }
-  return parseInt(trimmed.substring(commaPos + 1, commaPos + 6));
+    const trimmed = addr.replaceAll(/\s/g, '');
+    const commaPos = trimmed.indexOf(",");
+    if (commaPos == -1) {
+        return null;
+    }
+    return parseInt(trimmed.substring(commaPos + 1, commaPos + 6));
 }
 
 function name2addr(name) {
-  if(VERBOSE) {
-  	console.log("Name:" + name)
-  }
-  if(name == null) {
-    return null;
-  }
-  
-  const objects = names_json.filter(obj => obj["Institution"] == name);
-  
-  if(objects.length < 1) {
-    return null;
-  }
-  return objects[0]["Adresse"]; 
+    if (VERBOSE) {
+        console.log("Name:" + name)
+    }
+    if (name == null) {
+        return null;
+    }
+
+    const objects = names_json.filter(obj => obj["Institution"] == name);
+
+    if (objects.length < 1) {
+        return null;
+    }
+    return objects[0]["Adresse"];
 }
 
 function plz2distr(plz) {
-  if(VERBOSE) {
-    console.log("PLZ:" + plz)
-  }
-  if(plz == null) {
-    return null;
-  }
-  
-  var objects = zipcodes_json.filter(obj => obj["PLZ"] == plz); 
-  
-  if(objects.length < 1) {
-    return null;
-  }
+    if (VERBOSE) {
+        console.log("PLZ:" + plz)
+    }
+    if (plz == null) {
+        return null;
+    }
 
-  if(objects.length > 1) {
-    var unique = [];
-    for(var u = 0; u < objects.length; u++) {
-    	if(!unique.filter(distr => distr == objects[u]["Stadtteil"]).length > 0) {
-          unique.push(objects[u]["Stadtteil"]);
+    var objects = zipcodes_json.filter(obj => obj["PLZ"] == plz);
+
+    if (objects.length < 1) {
+        return null;
+    }
+
+    if (objects.length > 1) {
+        var unique = [];
+        for (var u = 0; u < objects.length; u++) {
+            if (!unique.filter(distr => distr == objects[u]["Stadtteil"]).length > 0) {
+                unique.push(objects[u]["Stadtteil"]);
+            }
         }
-  	}
-	return unique;
-  }
-  
-  return [objects[0]["Stadtteil"]];
+        return unique;
+    }
+
+    return [objects[0]["Stadtteil"]];
 }
 
 // Returns district from insitition name
 function name2distr(name) {
-  return plz2distr(addr2plz(name2addr(name)));
+    return plz2distr(addr2plz(name2addr(name)));
 }
 
 // TODO:
@@ -148,78 +148,78 @@ function name2distr(name) {
 //     not being matched in the names dataset?
 function districtTransform() {
 
-  var transformed = {};
-  const datasets = [stats_11_12_json, stats_13_14_json];
-  const years = [["2011", "2012"], ["2013", "2014"]];
-  
-  for(var k = 0; k < 2; k++)  {
-    
-    dataset = datasets[k];
-    var year__0 = years[k][0];
-    var year__1 = years[k][1];
-    
-    for(var i = 0; i < dataset.length ; i++) {
-    
-    	const obj = dataset[i];
-    	const name = obj["Institutionsname"];
-    
-    	if(name == "") {
-          continue;
-    	}
-    
-		const districts = name2distr(name);
-      
-        if (districts == null) {
-      	  continue;
-    	}
-      
-		for(var u = 0; u < districts.length; u++) {
-          const distr = districts[u];
-          
-      	  if(!(distr in transformed)) {
-        	transformed[distr] = {};
-      	  }
-      
-          if(!(year__0 in transformed[distr])) {
-            transformed[distr][year__0] = [];
-          }
-  
-          if(!(year__1 in transformed[distr])) {
-            transformed[distr][year__1] = [];
-          }
+    var transformed = {};
+    const datasets = [stats_11_12_json, stats_13_14_json];
+    const years = [["2011", "2012"], ["2013", "2014"]];
 
-          var obj_1 = {};
-          var obj_2 = {};
-        
-          const keys__1 = Object.keys(obj).filter(key => key.includes("__1"));
-    	  var nonConstantKeys = [];
-        
-          for(var j = 0; j < keys__1.length; j++) {
-          
-            const keyShort = keys__1[j].substring(0,  keys__1[j].indexOf("__1"));
-          
-            nonConstantKeys.push(keyShort);
-            nonConstantKeys.push(keys__1[j]);
-          
-            obj_1[keyShort] = obj[keyShort];
-            obj_2[keyShort] = obj[keys__1[j]];
-          
-          }
-    
-          const constantKeys = Object.keys(obj).filter(key => !nonConstantKeys.includes(key));
-        
-          for(var j = 0; j < constantKeys.length; j++) {
-            obj_1[constantKeys[j]] = obj[constantKeys[j]];
-            obj_2[constantKeys[j]] = obj[constantKeys[j]];
-          }
-        
-          transformed[distr][year__0].push(obj_1);
-          transformed[distr][year__1].push(obj_2);
-    
- 	   }
-     }
-  }
-  return transformed;
+    for (var k = 0; k < 2; k++) {
+
+        dataset = datasets[k];
+        var year__0 = years[k][0];
+        var year__1 = years[k][1];
+
+        for (var i = 0; i < dataset.length; i++) {
+
+            const obj = dataset[i];
+            const name = obj["Institutionsname"];
+
+            if (name == "") {
+                continue;
+            }
+
+            const districts = name2distr(name);
+
+            if (districts == null) {
+                continue;
+            }
+
+            for (var u = 0; u < districts.length; u++) {
+                const distr = districts[u];
+
+                if (!(distr in transformed)) {
+                    transformed[distr] = {};
+                }
+
+                if (!(year__0 in transformed[distr])) {
+                    transformed[distr][year__0] = [];
+                }
+
+                if (!(year__1 in transformed[distr])) {
+                    transformed[distr][year__1] = [];
+                }
+
+                var obj_1 = {};
+                var obj_2 = {};
+
+                const keys__1 = Object.keys(obj).filter(key => key.includes("__1"));
+                var nonConstantKeys = [];
+
+                for (var j = 0; j < keys__1.length; j++) {
+
+                    const keyShort = keys__1[j].substring(0, keys__1[j].indexOf("__1"));
+
+                    nonConstantKeys.push(keyShort);
+                    nonConstantKeys.push(keys__1[j]);
+
+                    obj_1[keyShort] = obj[keyShort];
+                    obj_2[keyShort] = obj[keys__1[j]];
+
+                }
+
+                const constantKeys = Object.keys(obj).filter(key => !nonConstantKeys.includes(key));
+
+                for (var j = 0; j < constantKeys.length; j++) {
+                    obj_1[constantKeys[j]] = obj[constantKeys[j]];
+                    obj_2[constantKeys[j]] = obj[constantKeys[j]];
+                }
+
+                transformed[distr][year__0].push(obj_1);
+                transformed[distr][year__1].push(obj_2);
+
+            }
+        }
+    }
+    return transformed;
 }
 
 VERBOSE = false
