@@ -235,5 +235,6 @@ In the following, you can see the names of these institutions as they are contai
 # %%--- [javascript]
 # properties:
 #   top_hidden: true
+#   run_on_load: true
 # ---%%
 console.log(missing);
