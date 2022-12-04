@@ -229,9 +229,9 @@ VERBOSE = false
 console.log(districtTransform());
 // console.log(missing)
 # %% [markdown]
-Please take note that for some institution names in the “besuchzahlen…”- dataset, the containing district could be determined programmatically (e.g. because the name could not be matched in the “standorte…”- dataset). For this prototype, these institutions were therefore excluded from our visualization.
+Please take note that for some institution names in the “besuchzahlen…”- dataset, the containing district could **not** be determined programmatically (e.g. because the name could not be matched in the “standorte…”- dataset). For this prototype, these institutions were therefore excluded from our visualization.
 
-In the following, you can see the names of these institutions as they are contained in the “besuchzahlen…”-dataset.
+In the following, you can see the names of these institutions as listed in the “besuchzahlen…”- dataset.
 # %%--- [javascript]
 # properties:
 #   top_hidden: true
@@ -506,4 +506,8 @@ const myChart = new Chart(canvas.getContext("2d"),
     },
 );
 
+<<<<<<< Updated upstream
 canvas
+=======
+canvas
+>>>>>>> Stashed changes
