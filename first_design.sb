@@ -505,9 +505,4 @@ const myChart = new Chart(canvas.getContext("2d"),
         }
     },
 );
-
-<<<<<<< Updated upstream
-canvas
-=======
-canvas
->>>>>>> Stashed changes
+canvas;
