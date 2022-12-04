@@ -447,7 +447,7 @@ const myChart = new Chart(canvas.getContext("2d"),
 );
 
 canvas
-# %% [javascript]
+# %%--- [javascript]
 # properties:
 #   run_on_load: true
 #   top_hidden: true
@@ -477,7 +477,7 @@ const myChart = new Chart(canvas.getContext("2d"),
 );
 
 canvas
-# %% [javascript]
+# %%--- [javascript]
 # properties:
 #   run_on_load: true
 #   top_hidden: true
