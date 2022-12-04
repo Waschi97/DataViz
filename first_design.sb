@@ -238,3 +238,272 @@ In the following, you can see the names of these institutions as they are contai
 #   run_on_load: true
 # ---%%
 console.log(missing);
+
+# %%--- [javascript]
+# properties:
+#   run_on_load: true
+#   top_hidden: true
+#   bottom_hidden: true
+# ---%%
+var data = districtTransform();
+
+var districts = Object.keys(data);
+var years = [2011,2012,2013,2014];
+
+bins = [[0, 100000], [100000, 300000], [300000, 30000000]]
+
+const CHART_COLORS = {
+  red: 'rgb(255, 99, 132)',
+  orange: 'rgb(255, 159, 64)',
+  yellow: 'rgb(255, 205, 86)',
+  green: 'rgb(75, 192, 192)',
+  blue: 'rgb(54, 162, 235)',
+  purple: 'rgb(153, 102, 255)',
+  grey: 'rgb(201, 203, 207)'
+};
+
+data_all = {}
+years.forEach(function (year){
+  // init bin documentation
+  var district_bins = [];
+
+  //bins.forEach((bin) => {
+  //  district_bins.push(0);
+  //});
+
+  // iterate through bins
+  bins.forEach((bin, index) => {
+	var bin_values = [];
+    
+    districts.forEach((district) => {
+
+      var count = 0;
+      // go through the attractions
+      data[district][year].forEach((attraction) => {
+        //console.log(attraction['Besuche_insgesamt'])
+        var besuche = 0;
+        if (typeof(attraction['Besuche_insgesamt']) == 'number') {
+          besuche = attraction['Besuche_insgesamt'];
+        }
+        else {
+        	besuche = parseInt(attraction['Besuche_insgesamt'].replace(',', ''));
+        }
+        if (besuche >= bin[0] && besuche < bin[1]) {
+          count += 1;
+        }
+      });
+      bin_values.push(count);
+	});
+    
+    district_bins.push(bin_values);
+    
+  });
+
+  // create dataset
+  var dataset = {};
+  dataset['labels'] = districts;
+  dataset['datasets'] = []
+  district_bins.forEach((bin, index) => {
+    var label = '';
+    if (index == 0) {
+      label = '< ' + bins[index][1] + ' Besucher';
+    }
+    else {
+      if (index == (district_bins.length - 1)) {
+        label = '> ' + bins[index][0] + ' Besucher';
+      }
+      else {
+        label = bins[index][0] + ' - ' + bins[index][1] + ' Besucher';
+      }
+    }
+    var bin_object = {
+      data: bin,
+      label: label,
+      backgroundColor: Object.values(CHART_COLORS)[index],
+    }
+    dataset['datasets'].push(bin_object);
+  });
+
+  // add total bin
+  var total_bin = [];
+  for ( let i = 0; i < districts.length; i++) {
+    var total = 0;
+    district_bins.forEach((bin) => {
+      total += bin[i];
+    });
+
+    total_bin.push(total);
+  }
+
+  dataset['datasets'].push({
+    data: total_bin,
+    label: 'Total',
+    backgroundColor: CHART_COLORS['grey'],
+  });
+  
+  // add to data_all
+  data_all[year] = dataset;
+});
+
+data_all
+# %% [javascript]
+# properties:
+#   run_on_load: true
+#   top_hidden: true
+# ---%%
+// Loading Chart.js from a CDN.
+await import("https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js");
+await import("https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js");
+
+
+// A simple bar chart using Chart.js
+//const canvas = 
+const canvas = document.createElement("canvas");
+const myChart = new Chart(canvas.getContext("2d"),
+    {
+        type: "bar",
+        data: data_all[2011],
+      	options: {
+          indexAxis: 'y',
+          elements: {
+            bar: {
+              borderWidth: 2,
+            }
+          },
+          responsive: true,
+          plugins: {
+            legend: {
+              position: 'right',
+            }
+          }
+        }
+    },
+);
+
+function btn_11 () {
+  myChart.data = data_all[2011];
+  myChart.update();
+}
+
+const button_2011 = document.createElement('button');
+button_2011.appendChild(document.createTextNode('2011'));
+button_2011.setAttribute('id', 'btn_2011');
+button_2011.setAttribute('onclick', 'btn_11()');
+button_2011.onclick = btn_11();
+const button_2012 = document.createElement('button');
+button_2012.appendChild(document.createTextNode('2012'));
+button_2012.setAttribute('id', 'btn_2012');
+button_2011.onclick = () => {myChart.data = data_all[2011]; myChart.update();};
+const button_2013 = document.createElement('button');
+button_2013.appendChild(document.createTextNode('2013'));
+button_2013.setAttribute('id', 'btn_2013');
+const button_2014 = document.createElement('button');
+button_2011.onclick = () => {myChart.data = data_all[2011]; myChart.update();};
+button_2014.appendChild(document.createTextNode('2014'));
+button_2014.setAttribute('id', 'btn_2014');
+button_2011.onclick = () => {myChart.data = data_all[2011]; myChart.update();};
+
+
+
+//document.appendChild()
+var div = document.createElement('div');
+div.appendChild(canvas);
+div.appendChild(button_2011);
+div.appendChild(button_2012);
+div.appendChild(button_2013);
+div.appendChild(button_2014);
+
+
+
+
+
+console.log(canvas);
+console.log(button_2011);
+console.log(div);
+canvas
+# %% [javascript]
+// A simple bar chart using Chart.js
+//const canvas = 
+const canvas = document.createElement("canvas");
+const myChart = new Chart(canvas.getContext("2d"),
+    {
+        type: "bar",
+        data: data_all[2012],
+      	options: {
+          indexAxis: 'y',
+          elements: {
+            bar: {
+              borderWidth: 2,
+            }
+          },
+          responsive: true,
+          plugins: {
+            legend: {
+              position: 'right',
+            }
+          }
+        }
+    },
+);
+
+canvas
+# %% [javascript]
+# properties:
+#   run_on_load: true
+#   top_hidden: true
+# ---%%
+// A simple bar chart using Chart.js
+//const canvas = 
+const canvas = document.createElement("canvas");
+const myChart = new Chart(canvas.getContext("2d"),
+    {
+        type: "bar",
+        data: data_all[2013],
+      	options: {
+          indexAxis: 'y',
+          elements: {
+            bar: {
+              borderWidth: 2,
+            }
+          },
+          responsive: true,
+          plugins: {
+            legend: {
+              position: 'right',
+            }
+          }
+        }
+    },
+);
+
+canvas
+# %% [javascript]
+# properties:
+#   run_on_load: true
+#   top_hidden: true
+# ---%%
+// A simple bar chart using Chart.js
+//const canvas = 
+const canvas = document.createElement("canvas");
+const myChart = new Chart(canvas.getContext("2d"),
+    {
+        type: "bar",
+        data: data_all[2014],
+      	options: {
+          indexAxis: 'y',
+          elements: {
+            bar: {
+              borderWidth: 2,
+            }
+          },
+          responsive: true,
+          plugins: {
+            legend: {
+              position: 'right',
+            }
+          }
+        }
+    },
+);
+
+canvas
