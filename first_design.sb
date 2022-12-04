@@ -1,29 +1,54 @@
 # %% [markdown]
 # Starboard - First Design Sprint
 
-**Dieses Notebook wird direkt von github geladen:**
+## Availibility of attractive cultural facilities in the destricts of Berlin
+
+\
+**This notebook is loaded directly from github:**
 
 <https://github.com/Waschi97/DataViz/tree/main/first_design.sb>
 
-Dieses Notebook läuft direkt im Browser und braucht keine serverseitige Installation.
+There is no need for any browser-based installations.
 # %%--- [markdown]
 # properties:
 #   locked: true
 # ---%%
-Wir hatten in der ersten Woche ein wenig Zeitprobleme und konnten deswegen noch nicht ernsthaft mit dem Starboard beginnen.
+### Goal:
 
-Wir haben allerdings schon die XLS Datein in CSV umgewandelt (zu sehen im GitHub) und über das Preprocessing gesprochen.
-
-Für dieses steht an:
-
-- [ ] CSV einlesen und in eine sinnvolle Datenstruktur integrieren
-- [ ] aus Adressdaten Bezirke ableiten
-- [ ] in den Besucherdaten Besucher und Besucherinnen zusammenfassen
-- [ ] Adress- und Besucherdaten kombinieren
-- [ ] verschiedene Bucket-Sizes für die Besucherdaten ausprobieren
+Cultural facilities are spread all over Berlin. With information about the amount of visitors each facility gets attractiveness can be defined for each of them. Now it might be desirable that each district can account for at least some attractive cultural facilities. With this information one could decide whether some destricts might be in need of some governmental support.
 
 \
+The goal of this starboard is to provide a visualization that gives insight to this question:
 
+                       **Are attractive cultural facilities availible in each district of Berlin?**
+# %% [markdown]
+### Data:
+
+The data for this project originated from [daten.berlin.de](https://daten.berlin.de) which is an online service that gives access to a vast load of different data sets and is provided by the Berlin Senate Department for Economics, Energy and Public Enterprises.
+
+\
+Here we needed two data sets in particular:
+
+* positional data set: [https://daten.berlin.de/datensaetze/standorte-geförderter-kultureinrichtungen](https://daten.berlin.de/datensaetze/standorte-gef%C3%B6rderter-kultureinrichtungen)
+* data set containg visitor information: <https://daten.berlin.de/datensaetze/besuchszahlen-%C3%B6ffentlich-gef%C3%B6rderten-berliner-kultureinrichtungen>
+
+The second link actually gives access to two data sets containing visitor information; one for 2011/12 and one for 2013/14.
+
+\
+All data is provided in .XLS format (Microsoft Excel). As this format is really awkward to work with we transformed the tables into .CSV and subsequently into .JSON files manually. Afterwards we made them availible in our github repository and simply fetch them.
+# %% [markdown]
+### Preprocessing:
+
+Before we can visualize the data we need to do some preprocessing.
+
+\
+First of all we strip the postcode from the adress of each facility and use it to order the facility into its district. As some postcodes appear in multiple different districts we needed to resolve these conflicts manually.
+
+\
+Secondly the visitor information is itemized by a lot of different features; paying vs. non-paying, female vs. male, children vs. adults. We decided to not include this itemization and simply use the overall number of visitors disregarding their properties. The only split that remains is the seperation by year.
+
+\
+Lastly we combined the two informations into a well suited datastructure ready for plotting.
 # %% [javascript]
 const url_11_12 = "https://raw.githubusercontent.com/Waschi97/DataViz/main/json_daten/besucherstatistik-2011_2012.json";
 const url_13_14 = "https://raw.githubusercontent.com/Waschi97/DataViz/main/json_daten/besucherstatistik-2013_2014.json";
