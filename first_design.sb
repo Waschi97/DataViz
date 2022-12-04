@@ -77,8 +77,6 @@ var stats_13_14_json = await resp.json();
 #   run_on_load: true
 #   top_hidden: true
 # ---%%
-
-
 function addr2plz(addr) {
     if (VERBOSE) {
         console.log("Addr:" + addr);
@@ -143,6 +141,8 @@ function name2distr(name) {
     return plz2distr(addr2plz(name2addr(name)));
 }
 
+var missing = [];
+
 // TODO:
 //  - Can we do something about so many names of the 11_12_dataset 
 //     not being matched in the names dataset?
@@ -151,7 +151,7 @@ function districtTransform() {
     var transformed = {};
     const datasets = [stats_11_12_json, stats_13_14_json];
     const years = [["2011", "2012"], ["2013", "2014"]];
-
+  	
     for (var k = 0; k < 2; k++) {
 
         dataset = datasets[k];
@@ -170,6 +170,9 @@ function districtTransform() {
             const districts = name2distr(name);
 
             if (districts == null) {
+                if(missing.filter(n => n == name).length == 0) {
+          			missing.push(name);
+          		}
                 continue;
             }
 
@@ -224,3 +227,13 @@ function districtTransform() {
 
 VERBOSE = false
 console.log(districtTransform());
+// console.log(missing)
+# %% [markdown]
+Please take note that for some institution names in the “besuchzahlen…”- dataset, the containing district could be determined programmatically (e.g. because the name could not be matched in the “standorte…”- dataset). For this prototype, these institutions were therefore excluded from our visualization.
+
+In the following, you can see the names of these institutions as they are contained in the “besuchzahlen…”-dataset.
+# %%--- [javascript]
+# properties:
+#   top_hidden: true
+# ---%%
+console.log(missing);
