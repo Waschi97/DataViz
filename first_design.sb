@@ -1,7 +1,7 @@
 # %% [markdown]
 # Starboard - First Design Sprint
 
-## Availibility of attractive cultural facilities in the destricts of Berlin
+## Availability of attractive cultural facilities in the destricts of Berlin
 
 \
 **This notebook is loaded directly from github:**
@@ -346,7 +346,7 @@ years.forEach(function (year){
 });
 
 data_all
-# %% [javascript]
+# %%--- [javascript]
 # properties:
 #   run_on_load: true
 #   top_hidden: true
