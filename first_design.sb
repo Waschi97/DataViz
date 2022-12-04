@@ -1,7 +1,7 @@
 # %% [markdown]
 # Starboard - First Design Sprint
 
-## Availibility of attractive cultural facilities in the destricts of Berlin
+## Availability of attractive cultural facilities in the destricts of Berlin
 
 \
 **This notebook is loaded directly from github:**
@@ -52,6 +52,7 @@ Lastly we combined the two informations into a well suited datastructure ready f
 # %%--- [javascript]
 # properties:
 #   run_on_load: true
+#   bottom_hidden: true
 #   top_hidden: true
 # ---%%
 const url_11_12 = "https://raw.githubusercontent.com/Waschi97/DataViz/main/json_daten/besucherstatistik-2011_2012.json";
@@ -229,9 +230,9 @@ VERBOSE = false
 console.log(districtTransform());
 // console.log(missing)
 # %% [markdown]
-Please take note that for some institution names in the “besuchzahlen…”- dataset, the containing district could be determined programmatically (e.g. because the name could not be matched in the “standorte…”- dataset). For this prototype, these institutions were therefore excluded from our visualization.
+Please take note that for some institution names in the “besuchzahlen…”- dataset, the containing district could **not** be determined programmatically (e.g. because the name could not be matched in the “standorte…”- dataset). For this prototype, these institutions were therefore excluded from our visualization.
 
-In the following, you can see the names of these institutions as they are contained in the “besuchzahlen…”-dataset.
+In the following, you can see the names of these institutions as listed in the “besuchzahlen…”- dataset.
 # %%--- [javascript]
 # properties:
 #   top_hidden: true
@@ -346,19 +347,23 @@ years.forEach(function (year){
 });
 
 data_all
-# %% [javascript]
+# %%--- [javascript]
 # properties:
 #   run_on_load: true
 #   top_hidden: true
 # ---%%
 // Loading Chart.js from a CDN.
 await import("https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js");
-await import("https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js");
+await import("https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js");
 
 
 // A simple bar chart using Chart.js
 //const canvas = 
+const chartDiv = document.createElement('div');
+chartDiv.setAttribute('id', 'chartDiv');
 const canvas = document.createElement("canvas");
+canvas.setAttribute('id', 'myChart');
+chartDiv.appendChild(canvas);
 const myChart = new Chart(canvas.getContext("2d"),
     {
         type: "bar",
@@ -375,135 +380,53 @@ const myChart = new Chart(canvas.getContext("2d"),
             legend: {
               position: 'right',
             }
+          },
+          scales: {
+            x: {
+              min: 0,
+              max: 50
+            }
           }
         }
     },
 );
+const span = document.createElement("span");
 
-function btn_11 () {
+function btn_11(event) {
+  console.log('btn_11');
+  //myChart.resize(400,400);
   myChart.data = data_all[2011];
   myChart.update();
+  //span.innerText = 'btn_2011';
+}
+function btn_12(event) {
+  console.log('btn_12');
+  //myChart.resize(400,400);
+  myChart.data = data_all[2012];
+  myChart.update();
+  //span.innerText = 'btn_2012';
+}
+function btn_13(event) {
+  console.log('btn_13');
+  myChart.data = data_all[2013];
+  myChart.update();
+  //span.innerText = 'btn_2013';
+}
+function btn_14(event) {
+  console.log('btn_14');
+  myChart.data = data_all[2014];
+  myChart.update();
+  //span.innerText = 'btn_2014';
 }
 
-const button_2011 = document.createElement('button');
-button_2011.appendChild(document.createTextNode('2011'));
-button_2011.setAttribute('id', 'btn_2011');
-button_2011.setAttribute('onclick', 'btn_11()');
-button_2011.onclick = btn_11();
-const button_2012 = document.createElement('button');
-button_2012.appendChild(document.createTextNode('2012'));
-button_2012.setAttribute('id', 'btn_2012');
-button_2011.onclick = () => {myChart.data = data_all[2011]; myChart.update();};
-const button_2013 = document.createElement('button');
-button_2013.appendChild(document.createTextNode('2013'));
-button_2013.setAttribute('id', 'btn_2013');
-const button_2014 = document.createElement('button');
-button_2011.onclick = () => {myChart.data = data_all[2011]; myChart.update();};
-button_2014.appendChild(document.createTextNode('2014'));
-button_2014.setAttribute('id', 'btn_2014');
-button_2011.onclick = () => {myChart.data = data_all[2011]; myChart.update();};
-
-
-
-//document.appendChild()
-var div = document.createElement('div');
-div.appendChild(canvas);
-div.appendChild(button_2011);
-div.appendChild(button_2012);
-div.appendChild(button_2013);
-div.appendChild(button_2014);
-
-
-
-
-
-console.log(canvas);
-console.log(button_2011);
-console.log(div);
-canvas
-# %% [javascript]
-// A simple bar chart using Chart.js
-//const canvas = 
-const canvas = document.createElement("canvas");
-const myChart = new Chart(canvas.getContext("2d"),
-    {
-        type: "bar",
-        data: data_all[2012],
-      	options: {
-          indexAxis: 'y',
-          elements: {
-            bar: {
-              borderWidth: 2,
-            }
-          },
-          responsive: true,
-          plugins: {
-            legend: {
-              position: 'right',
-            }
-          }
-        }
-    },
-);
-
-canvas
-# %% [javascript]
-# properties:
-#   run_on_load: true
-#   top_hidden: true
-# ---%%
-// A simple bar chart using Chart.js
-//const canvas = 
-const canvas = document.createElement("canvas");
-const myChart = new Chart(canvas.getContext("2d"),
-    {
-        type: "bar",
-        data: data_all[2013],
-      	options: {
-          indexAxis: 'y',
-          elements: {
-            bar: {
-              borderWidth: 2,
-            }
-          },
-          responsive: true,
-          plugins: {
-            legend: {
-              position: 'right',
-            }
-          }
-        }
-    },
-);
-
-canvas
-# %% [javascript]
-# properties:
-#   run_on_load: true
-#   top_hidden: true
-# ---%%
-// A simple bar chart using Chart.js
-//const canvas = 
-const canvas = document.createElement("canvas");
-const myChart = new Chart(canvas.getContext("2d"),
-    {
-        type: "bar",
-        data: data_all[2014],
-      	options: {
-          indexAxis: 'y',
-          elements: {
-            bar: {
-              borderWidth: 2,
-            }
-          },
-          responsive: true,
-          plugins: {
-            legend: {
-              position: 'right',
-            }
-          }
-        }
-    },
-);
-
-canvas
+html`
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+${chartDiv}
+${span}
+<div width='240px' style="padding-left: 150px; padding-top: 15px; padding-bottom: 20px">
+<button type="button" class="btn btn-light" @click=${btn_11}>2011</button>
+<button type="button" class="btn btn-light" @click=${btn_12}>2012</button>
+<button type="button" class="btn btn-light" @click=${btn_13}>2013</button>
+<button type="button" class="btn btn-light" @click=${btn_14}>2014</button>
+</div>
+`
