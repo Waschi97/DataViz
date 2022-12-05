@@ -1,7 +1,7 @@
 # %% [markdown]
 # Starboard - First Design Sprint
 
-## Availibility of attractive cultural facilities in the destricts of Berlin
+## Availability of attractive cultural facilities in the destricts of Berlin
 
 \
 **This notebook is loaded directly from github:**
@@ -51,8 +51,9 @@ Secondly the visitor information is itemized by a lot of different features; pay
 Lastly we combined the two informations into a well suited datastructure ready for plotting.
 # %%--- [javascript]
 # properties:
-#   top_hidden: true
 #   run_on_load: true
+#   bottom_hidden: true
+#   top_hidden: true
 # ---%%
 const url_11_12 = "https://raw.githubusercontent.com/Waschi97/DataViz/main/json_daten/besucherstatistik-2011_2012.json";
 const url_13_14 = "https://raw.githubusercontent.com/Waschi97/DataViz/main/json_daten/besucherstatistik-2013_2014.json";
@@ -74,137 +75,359 @@ var stats_13_14_json = await resp.json();
 // console.log(stats_13_14_json);
 # %%--- [javascript]
 # properties:
-#   top_hidden: true
 #   run_on_load: true
+#   top_hidden: true
 # ---%%
-
-
 function addr2plz(addr) {
-  if(VERBOSE) {
-    console.log("Addr:" + addr);
-  }
-  if(addr == null) {
-    return null;
-  }
+    if (VERBOSE) {
+        console.log("Addr:" + addr);
+    }
+    if (addr == null) {
+        return null;
+    }
 
-  const trimmed = addr.replaceAll(/\s/g,'');
-  const commaPos = trimmed.indexOf(",");
-  if (commaPos == -1) {
-    return null;
-  }
-  return parseInt(trimmed.substring(commaPos + 1, commaPos + 6));
+    const trimmed = addr.replaceAll(/\s/g, '');
+    const commaPos = trimmed.indexOf(",");
+    if (commaPos == -1) {
+        return null;
+    }
+    return parseInt(trimmed.substring(commaPos + 1, commaPos + 6));
 }
 
 function name2addr(name) {
-  if(VERBOSE) {
-  	console.log("Name:" + name)
-  }
-  if(name == null) {
-    return null;
-  }
-  
-  const objects = names_json.filter(obj => obj["Institution"] == name);
-  
-  if(objects.length < 1) {
-    return null;
-  }
-  return objects[0]["Adresse"]; 
+    if (VERBOSE) {
+        console.log("Name:" + name)
+    }
+    if (name == null) {
+        return null;
+    }
+
+    const objects = names_json.filter(obj => obj["Institution"] == name);
+
+    if (objects.length < 1) {
+        return null;
+    }
+    return objects[0]["Adresse"];
 }
 
 function plz2distr(plz) {
-  if(VERBOSE) {
-  console.log("PLZ:" + plz)
-  }
-  if(plz == null) {
-    return null;
-  }
-  
-  var objects = zipcodes_json.filter(obj => obj["PLZ"] == plz); 
-  
-  if(objects.length < 1) {
-    return null;
-  }
-  return objects[0]["Stadtteil"];
+    if (VERBOSE) {
+        console.log("PLZ:" + plz)
+    }
+    if (plz == null) {
+        return null;
+    }
+
+    var objects = zipcodes_json.filter(obj => obj["PLZ"] == plz);
+
+    if (objects.length < 1) {
+        return null;
+    }
+
+    if (objects.length > 1) {
+        var unique = [];
+        for (var u = 0; u < objects.length; u++) {
+            if (!unique.filter(distr => distr == objects[u]["Stadtteil"]).length > 0) {
+                unique.push(objects[u]["Stadtteil"]);
+            }
+        }
+        return unique;
+    }
+
+    return [objects[0]["Stadtteil"]];
 }
 
 // Returns district from insitition name
 function name2distr(name) {
-  return plz2distr(addr2plz(name2addr(name)));
+    return plz2distr(addr2plz(name2addr(name)));
 }
+
+var missing = [];
 
 // TODO:
 //  - Can we do something about so many names of the 11_12_dataset 
 //     not being matched in the names dataset?
 function districtTransform() {
 
-  var transformed = {};
-  const datasets = [stats_11_12_json, stats_13_14_json];
-  const years = [["2011", "2012"], ["2013", "2014"]];
-  
-  for(var k = 0; k < 2; k++)  {
-    
-    dataset = datasets[k];
-    var year__0 = years[k][0];
-    var year__1 = years[k][1];
-    
-    for(var i = 0; i < dataset.length ; i++) {
-    
-    	const obj = dataset[i];
-    	const name = obj["Institutionsname"];
-    
-    	if(name == "") {
-          continue;
-    	}
-    
-		const distr = name2distr(name);    
-    	if (distr == null) {
-      	  continue;
-    	}
+    var transformed = {};
+    const datasets = [stats_11_12_json, stats_13_14_json];
+    const years = [["2011", "2012"], ["2013", "2014"]];
+  	
+    for (var k = 0; k < 2; k++) {
 
-    	if(!(distr in transformed)) {
-      	  transformed[distr] = {};
-    	}
-    
-        if(!(year__0 in transformed[distr])) {
-          transformed[distr][year__0] = [];
-        }
+        dataset = datasets[k];
+        var year__0 = years[k][0];
+        var year__1 = years[k][1];
 
-        if(!(year__1 in transformed[distr])) {
-          transformed[distr][year__1] = [];
-        }
+        for (var i = 0; i < dataset.length; i++) {
 
-        var obj_1 = {};
-        var obj_2 = {};
-        
-        const keys__1 = Object.keys(obj).filter(key => key.includes("__1"));
-    	var nonConstantKeys = [];
-        
-        for(var j = 0; j < keys__1.length; j++) {
-          
-          const keyShort = keys__1[j].substring(0,  keys__1[j].indexOf("__1"));
-          
-          nonConstantKeys.push(keyShort);
-          nonConstantKeys.push(keys__1[j]);
-          
-          obj_1[keyShort] = obj[keyShort];
-          obj_2[keyShort] = obj[keys__1[j]];
-          
+            const obj = dataset[i];
+            const name = obj["Institutionsname"];
+
+            if (name == "") {
+                continue;
+            }
+
+            const districts = name2distr(name);
+
+            if (districts == null) {
+                if(missing.filter(n => n == name).length == 0) {
+          			missing.push(name);
+          		}
+                continue;
+            }
+
+            for (var u = 0; u < districts.length; u++) {
+                const distr = districts[u];
+
+                if (!(distr in transformed)) {
+                    transformed[distr] = {};
+                }
+
+                if (!(year__0 in transformed[distr])) {
+                    transformed[distr][year__0] = [];
+                }
+
+                if (!(year__1 in transformed[distr])) {
+                    transformed[distr][year__1] = [];
+                }
+
+                var obj_1 = {};
+                var obj_2 = {};
+
+                const keys__1 = Object.keys(obj).filter(key => key.includes("__1"));
+                var nonConstantKeys = [];
+
+                for (var j = 0; j < keys__1.length; j++) {
+
+                    const keyShort = keys__1[j].substring(0, keys__1[j].indexOf("__1"));
+
+                    nonConstantKeys.push(keyShort);
+                    nonConstantKeys.push(keys__1[j]);
+
+                    obj_1[keyShort] = obj[keyShort];
+                    obj_2[keyShort] = obj[keys__1[j]];
+
+                }
+
+                const constantKeys = Object.keys(obj).filter(key => !nonConstantKeys.includes(key));
+
+                for (var j = 0; j < constantKeys.length; j++) {
+                    obj_1[constantKeys[j]] = obj[constantKeys[j]];
+                    obj_2[constantKeys[j]] = obj[constantKeys[j]];
+                }
+
+                transformed[distr][year__0].push(obj_1);
+                transformed[distr][year__1].push(obj_2);
+
+            }
         }
-    
-        const constantKeys = Object.keys(obj).filter(key => !nonConstantKeys.includes(key));
-        
-        for(var j = 0; j < constantKeys.length; j++) {
-          obj_1[constantKeys[j]] = obj[constantKeys[j]];
-          obj_2[constantKeys[j]] = obj[constantKeys[j]];
-        }
-        
-        transformed[distr][year__0].push(obj_1);
-        transformed[distr][year__1].push(obj_2);
-    
- 	 }
-  }
-  return transformed;
+    }
+    return transformed;
 }
 
 VERBOSE = false
 console.log(districtTransform());
+// console.log(missing)
+# %% [markdown]
+Please take note that for some institution names in the “besuchzahlen…”- dataset, the containing district could **not** be determined programmatically (e.g. because the name could not be matched in the “standorte…”- dataset). For this prototype, these institutions were therefore excluded from our visualization.
+
+In the following, you can see the names of these institutions as listed in the “besuchzahlen…”- dataset.
+# %%--- [javascript]
+# properties:
+#   top_hidden: true
+#   run_on_load: true
+# ---%%
+console.log(missing);
+
+# %%--- [javascript]
+# properties:
+#   run_on_load: true
+#   top_hidden: true
+#   bottom_hidden: true
+# ---%%
+var data = districtTransform();
+
+var districts = Object.keys(data);
+var years = [2011,2012,2013,2014];
+
+bins = [[0, 100000], [100000, 300000], [300000, 30000000]]
+
+const CHART_COLORS = {
+  orange: 'rgb(255, 159, 64)',
+  red: 'rgb(255, 99, 132)',
+  purple: 'rgb(153, 102, 255)',
+  blue: 'rgb(54, 162, 235)',
+  yellow: 'rgb(255, 205, 86)',
+  green: 'rgb(75, 192, 192)',
+  grey: 'rgb(201, 203, 207)'
+};
+
+data_all = {}
+years.forEach(function (year){
+  // init bin documentation
+  var district_bins = [];
+
+  //bins.forEach((bin) => {
+  //  district_bins.push(0);
+  //});
+
+  // iterate through bins
+  bins.forEach((bin, index) => {
+	var bin_values = [];
+    
+    districts.forEach((district) => {
+
+      var count = 0;
+      // go through the attractions
+      data[district][year].forEach((attraction) => {
+        //console.log(attraction['Besuche_insgesamt'])
+        var besuche = 0;
+        if (typeof(attraction['Besuche_insgesamt']) == 'number') {
+          besuche = attraction['Besuche_insgesamt'];
+        }
+        else {
+        	besuche = parseInt(attraction['Besuche_insgesamt'].replace(',', ''));
+        }
+        if (besuche >= bin[0] && besuche < bin[1]) {
+          count += 1;
+        }
+      });
+      bin_values.push(count);
+	});
+    
+    district_bins.push(bin_values);
+    
+  });
+
+  // create dataset
+  var dataset = {};
+  dataset['labels'] = districts;
+  dataset['datasets'] = []
+  district_bins.forEach((bin, index) => {
+    var label = '';
+    if (index == 0) {
+      label = '< ' + bins[index][1] + ' Besucher';
+    }
+    else {
+      if (index == (district_bins.length - 1)) {
+        label = '> ' + bins[index][0] + ' Besucher';
+      }
+      else {
+        label = bins[index][0] + ' - ' + bins[index][1] + ' Besucher';
+      }
+    }
+    var bin_object = {
+      data: bin,
+      label: label,
+      backgroundColor: Object.values(CHART_COLORS)[index],
+    }
+    dataset['datasets'].push(bin_object);
+  });
+
+  // add total bin
+  var total_bin = [];
+  for ( let i = 0; i < districts.length; i++) {
+    var total = 0;
+    district_bins.forEach((bin) => {
+      total += bin[i];
+    });
+
+    total_bin.push(total);
+  }
+
+  dataset['datasets'].push({
+    data: total_bin,
+    label: 'Total',
+    backgroundColor: CHART_COLORS['grey'],
+  });
+  
+  // add to data_all
+  data_all[year] = dataset;
+});
+
+data_all
+# %%--- [javascript]
+# properties:
+#   run_on_load: true
+#   top_hidden: true
+# ---%%
+// Loading Chart.js from a CDN.
+await import("https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js");
+
+
+// A simple bar chart using Chart.js
+//const canvas = 
+const chartDiv = document.createElement('div');
+chartDiv.setAttribute('id', 'chartDiv');
+const canvas = document.createElement("canvas");
+canvas.setAttribute('id', 'myChart');
+chartDiv.appendChild(canvas);
+const myChart = new Chart(canvas.getContext("2d"),
+    {
+        type: "bar",
+        data: data_all[2011],
+      	options: {
+          indexAxis: 'y',
+          elements: {
+            bar: {
+              borderWidth: 2,
+            }
+          },
+          responsive: true,
+          plugins: {
+            title: {
+                display: true,
+                text: 'Number of availible and attractive cultural facilities for each district of Berlin'
+            },
+            legend: {
+              position: 'right',
+            }
+          },
+          scales: {
+            x: {
+              min: 0,
+              max: 50
+            }
+          }
+        }
+    },
+);
+const span = document.createElement("span");
+
+function btn_11(event) {
+  console.log('btn_11');
+  //myChart.resize(400,400);
+  myChart.data = data_all[2011];
+  myChart.update();
+  //span.innerText = 'btn_2011';
+}
+function btn_12(event) {
+  console.log('btn_12');
+  //myChart.resize(400,400);
+  myChart.data = data_all[2012];
+  myChart.update();
+  //span.innerText = 'btn_2012';
+}
+function btn_13(event) {
+  console.log('btn_13');
+  myChart.data = data_all[2013];
+  myChart.update();
+  //span.innerText = 'btn_2013';
+}
+function btn_14(event) {
+  console.log('btn_14');
+  myChart.data = data_all[2014];
+  myChart.update();
+  //span.innerText = 'btn_2014';
+}
+
+html`
+${chartDiv}
+${span}
+<div width='240px' style="padding-left: 150px; padding-top: 15px; padding-bottom: 20px">
+<button type="button" class="btn btn-light" @click=${btn_11}>2011</button>
+<button type="button" class="btn btn-light" @click=${btn_12}>2012</button>
+<button type="button" class="btn btn-light" @click=${btn_13}>2013</button>
+<button type="button" class="btn btn-light" @click=${btn_14}>2014</button>
+</div>
