@@ -360,7 +360,7 @@ Below you can see the prototype of our visualization. For each district (on the 
 Below the visualization you can select the year from which the data depicted originated from.
 
 \
-Note that not all districts are depicted in the visualization. For the missing districts we simply do not have any data. This can be caused by the none-existance of cultural facilities in these districts (e.g. the data). It can also not be ruled out that the elimination of facilities where we couldn’t determine their position caused this. Probably it is a combination of both.
+Note that the district “Marzahn-Hellersdorf” is missing in the visualization. Here we simply do not have any data. This is probably caused by the none-existance of cultural facilities. But it can also not be ruled out that the elimination of facilities where we couldn’t determine their position caused this.
 # %%--- [javascript]
 # properties:
 #   run_on_load: true
