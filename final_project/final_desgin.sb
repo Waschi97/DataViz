@@ -340,6 +340,13 @@ Below the visualization you can select the year from which the data depicted ori
 
 \
 Note that the district “Marzahn-Hellersdorf” is missing in the visualization. Here we simply do not have any data. This is probably caused by the none-existance of cultural facilities. But it can also not be ruled out that the elimination of facilities where we couldn’t determine their position caused this.
+# %% [javascript]
+var ifrm = document.createElement("iframe");
+ifrm.setAttribute("src", "https://raw.githubusercontent.com/Waschi97/DataViz/main/final_project/map_test.html");
+ifrm.style.width = "640px";
+ifrm.style.height = "480px";
+
+html`${ifrm}`
 # %%--- [javascript]
 # properties:
 #   run_on_load: true
