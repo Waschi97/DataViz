@@ -1,0 +1,400 @@
+# %% [markdown]
+# Starboard - Final Design
+
+## Availability of attractive cultural facilities in the destricts of Berlin
+
+\
+**This notebook is loaded directly from github:**
+
+<https://github.com/Waschi97/DataViz/tree/main/first_design.sb>
+
+There is no need for any browser-based installations.
+# %% [css]
+starboard-cell {
+    background-color: #fff;  /* Change this to #faf */
+    
+    /* Uncomment the next line for a dark mode effect! */
+    filter: invert() hue-rotate(180deg);
+    
+}
+
+starboard-console-output{
+    filter: invert() hue-rotate(180deg);
+}
+
+.cell-output-html {
+  background-color: #fff;
+  filter: invert(100%);
+}
+
+.cells-container {
+  	background-color: #000;
+}
+
+body {
+  background-color: #000;
+}
+# %%--- [javascript]
+# properties:
+#   run_on_load: true
+# ---%%
+const url_18 = "https://raw.githubusercontent.com/Waschi97/DataViz/main/final_project/json_files/data_2018.json";
+const url_19 = "https://raw.githubusercontent.com/Waschi97/DataViz/main/final_project/json_files/data_2019.json";
+const url_20 = "https://raw.githubusercontent.com/Waschi97/DataViz/main/final_project/json_files/data_2020.json";
+const url_21 = "https://raw.githubusercontent.com/Waschi97/DataViz/main/final_project/json_files/data_2021.json";
+
+
+resp = await fetch(url_18);
+var stats_18_json = await resp.json();
+
+resp = await fetch(url_19);
+var stats_18_json = await resp.json();
+
+resp = await fetch(url_20);
+var stats_18_json = await resp.json();
+
+resp = await fetch(url_21);
+var stats_18_json = await resp.json();
+
+console.log(stats_18_json[0]);
+# %%--- [javascript]
+# properties:
+#   run_on_load: true
+# ---%%
+function addr2plz(addr) {
+    if (VERBOSE) {
+        console.log("Addr:" + addr);
+    }
+    if (addr == null) {
+        return null;
+    }
+
+    const trimmed = addr.replaceAll(/\s/g, '');
+    const commaPos = trimmed.indexOf(",");
+    if (commaPos == -1) {
+        return null;
+    }
+    return parseInt(trimmed.substring(commaPos + 1, commaPos + 6));
+}
+
+function name2addr(name) {
+    if (VERBOSE) {
+        console.log("Name:" + name)
+    }
+    if (name == null) {
+        return null;
+    }
+
+    const objects = names_json.filter(obj => obj["Institution"] == name);
+
+    if (objects.length < 1) {
+        return null;
+    }
+    return objects[0]["Adresse"];
+}
+
+function plz2distr(plz) {
+    if (VERBOSE) {
+        console.log("PLZ:" + plz)
+    }
+    if (plz == null) {
+        return null;
+    }
+
+    var objects = zipcodes_json.filter(obj => obj["PLZ"] == plz);
+
+    if (objects.length < 1) {
+        return null;
+    }
+
+    if (objects.length > 1) {
+        var unique = [];
+        for (var u = 0; u < objects.length; u++) {
+            if (!unique.filter(distr => distr == objects[u]["Stadtteil"]).length > 0) {
+                unique.push(objects[u]["Stadtteil"]);
+            }
+        }
+        return unique;
+    }
+
+    return [objects[0]["Stadtteil"]];
+}
+
+// Returns district from insitition name
+function name2distr(name) {
+    return plz2distr(addr2plz(name2addr(name)));
+}
+
+var missing = [];
+
+// TODO:
+//  - Can we do something about so many names of the 11_12_dataset 
+//     not being matched in the names dataset?
+function districtTransform() {
+
+    var transformed = {};
+    const datasets = [stats_11_12_json, stats_13_14_json];
+    const years = [["2011", "2012"], ["2013", "2014"]];
+  	
+    for (var k = 0; k < 2; k++) {
+
+        dataset = datasets[k];
+        var year__0 = years[k][0];
+        var year__1 = years[k][1];
+
+        for (var i = 0; i < dataset.length; i++) {
+
+            const obj = dataset[i];
+            const name = obj["Institutionsname"];
+
+            if (name == "") {
+                continue;
+            }
+
+            const districts = name2distr(name);
+
+            if (districts == null) {
+                if(missing.filter(n => n == name).length == 0) {
+          			missing.push(name);
+          		}
+                continue;
+            }
+
+            for (var u = 0; u < districts.length; u++) {
+                const distr = districts[u];
+
+                if (!(distr in transformed)) {
+                    transformed[distr] = {};
+                }
+
+                if (!(year__0 in transformed[distr])) {
+                    transformed[distr][year__0] = [];
+                }
+
+                if (!(year__1 in transformed[distr])) {
+                    transformed[distr][year__1] = [];
+                }
+
+                var obj_1 = {};
+                var obj_2 = {};
+
+                const keys__1 = Object.keys(obj).filter(key => key.includes("__1"));
+                var nonConstantKeys = [];
+
+                for (var j = 0; j < keys__1.length; j++) {
+
+                    const keyShort = keys__1[j].substring(0, keys__1[j].indexOf("__1"));
+
+                    nonConstantKeys.push(keyShort);
+                    nonConstantKeys.push(keys__1[j]);
+
+                    obj_1[keyShort] = obj[keyShort];
+                    obj_2[keyShort] = obj[keys__1[j]];
+
+                }
+
+                const constantKeys = Object.keys(obj).filter(key => !nonConstantKeys.includes(key));
+
+                for (var j = 0; j < constantKeys.length; j++) {
+                    obj_1[constantKeys[j]] = obj[constantKeys[j]];
+                    obj_2[constantKeys[j]] = obj[constantKeys[j]];
+                }
+
+                transformed[distr][year__0].push(obj_1);
+                transformed[distr][year__1].push(obj_2);
+
+            }
+        }
+    }
+    return transformed;
+}
+
+VERBOSE = false
+console.log(districtTransform());
+// console.log(missing)
+# %% [markdown]
+Please take note that for some facilities their district could **not** be determined programmatically (e.g. because the name from the visitor data set could not be matched in the positional data set). For this prototype, these institutions were therefore excluded from our visualization.
+
+In the following, you can see the names of these institutions as listed in the visitor dataset:
+# %%--- [javascript]
+# properties:
+#   top_hidden: true
+#   run_on_load: true
+# ---%%
+console.log(missing);
+
+# %%--- [javascript]
+# properties:
+#   run_on_load: true
+#   bottom_hidden: true
+#   top_hidden: true
+# ---%%
+var data = districtTransform();
+
+var districts = Object.keys(data);
+var years = [2011,2012,2013,2014];
+
+bins = [[0, 100000], [100000, 300000], [300000, 30000000]]
+
+const CHART_COLORS = {
+  orange: 'rgb(255, 159, 64)',
+  red: 'rgb(255, 99, 132)',
+  purple: 'rgb(153, 102, 255)',
+  blue: 'rgb(54, 162, 235)',
+  yellow: 'rgb(255, 205, 86)',
+  green: 'rgb(75, 192, 192)',
+  grey: 'rgb(201, 203, 207)'
+};
+
+data_all = {}
+years.forEach(function (year){
+  // init bin documentation
+  var district_bins = [];
+
+  //bins.forEach((bin) => {
+  //  district_bins.push(0);
+  //});
+
+  // iterate through bins
+  bins.forEach((bin, index) => {
+	var bin_values = [];
+    
+    districts.forEach((district) => {
+
+      var count = 0;
+      // go through the attractions
+      data[district][year].forEach((attraction) => {
+        //console.log(attraction['Besuche_insgesamt'])
+        var besuche = 0;
+        if (typeof(attraction['Besuche_insgesamt']) == 'number') {
+          besuche = attraction['Besuche_insgesamt'];
+        }
+        else {
+        	besuche = parseInt(attraction['Besuche_insgesamt'].replace(',', ''));
+        }
+        if (besuche >= bin[0] && besuche < bin[1]) {
+          count += 1;
+        }
+      });
+      bin_values.push(count);
+	});
+    
+    district_bins.push(bin_values);
+    
+  });
+
+  // create dataset
+  var dataset = {};
+  dataset['labels'] = districts;
+  dataset['datasets'] = []
+
+  // add total bin
+  var total_bin = [];
+  for ( let i = 0; i < districts.length; i++) {
+    var total = 0;
+    district_bins.forEach((bin) => {
+      total += bin[i];
+    });
+
+    total_bin.push(total);
+  }
+
+  dataset['datasets'].push({
+    data: total_bin,
+    label: 'Total',
+    backgroundColor: CHART_COLORS['grey'],
+  });
+  
+  district_bins.forEach((bin, index) => {
+    var label = '';
+    if (index == 0) {
+      label = '< ' + bins[index][1] + ' visitors';
+    }
+    else {
+      if (index == (district_bins.length - 1)) {
+        label = '> ' + bins[index][0] + ' visitors';
+      }
+      else {
+        label = bins[index][0] + ' - ' + bins[index][1] + ' visitors';
+      }
+    }
+    var bin_object = {
+      data: bin,
+      label: label,
+      backgroundColor: Object.values(CHART_COLORS)[index],
+    }
+    dataset['datasets'].push(bin_object);
+  });
+  
+  // add to data_all
+  data_all[year] = dataset;
+});
+
+data_all
+# %% [markdown]
+### Visualization:
+
+Below you can see the prototype of our visualization. For each district (on the x-axis) it is shown how many cultural facilities are availible (y-axis). The facilities are group by their number of visitors. For this we have three bins; less than 100.000 visitors (orange), between 100.000 and 300.000 visitors (pink) and more than 300.000 visitors (purple). Additionally it is also shown how many facilities are availible in total.
+
+Below the visualization you can select the year from which the data depicted originated from.
+
+\
+Note that the district “Marzahn-Hellersdorf” is missing in the visualization. Here we simply do not have any data. This is probably caused by the none-existance of cultural facilities. But it can also not be ruled out that the elimination of facilities where we couldn’t determine their position caused this.
+# %% [javascript]
+var ifrm = document.createElement("iframe");
+ifrm.setAttribute("src", "https://raw.githubusercontent.com/Waschi97/DataViz/main/final_project/map_test.html");
+ifrm.style.width = "640px";
+ifrm.style.height = "480px";
+
+html`${ifrm}`
+# %%--- [javascript]
+# properties:
+#   run_on_load: true
+# ---%%
+// Loading Chart.js from a CDN.
+await import("https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js");
+await import("https://unpkg.com/leaflet@1.9.3/dist/leaflet.css");
+await import("https://unpkg.com/leaflet@1.9.3/dist/leaflet.js");
+
+
+// A simple bar chart using Chart.js
+const map_div = document.createElement('div');
+map_div.setAttribute('id', 'map');
+
+var map = L.map('map').setView([52.533, 13.426], 14);
+//         L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+//     maxZoom: 19,
+//     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+// }).addTo(map);
+var cyclosm = L.tileLayer('https://{s}.tile-cyclosm.openstreetmap.fr/cyclosm/{z}/{x}/{y}.png', {
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
+                minZoom: 0,
+                maxZoom: 20,
+            }).addTo(map);
+var marker = L.marker([52.53393955, 13.42689483]).addTo(map);
+// var map = new L.Map('map', {
+//     zoomControl: true, layers: [cyclosm]
+// });
+// map.attributionControl.setPrefix('<a href="http://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> | <a href="https://github.com/cyclosm/cyclosm-cartocss-style/releases" title="CyclOSM - Open Bicycle render">CyclOSM</a> ' + VERSION);
+// if (!map.restoreView()) {
+//     // Default view on Amsterdam
+//     map.setView([52.3727598, 4.8936041], 12);
+// }
+// var baseMaps = {
+//                     "CyclOSM": cyclosm,
+// };
+// L.control.layers(baseMaps, None, { collapsed: true }).addTo(map);
+// L.hash(map, allMapLayers);
+
+
+html`
+<head>
+    <style>
+        #map{ height: 600px; width: 800px;}
+    </style>
+</head>
+  <body>
+    <h1>Hello, world!</h1>
+    ${map_div}
+  </body>
+`

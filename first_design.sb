@@ -30,19 +30,22 @@ The data for this project originated from [daten.berlin.de](https://daten.berlin
 Here we needed two data sets in particular:
 
 * positional data set: [https://daten.berlin.de/datensaetze/standorte-geförderter-kultureinrichtungen](https://daten.berlin.de/datensaetze/standorte-gef%C3%B6rderter-kultureinrichtungen)
-* data set containg visitor information: <https://daten.berlin.de/datensaetze/besuchszahlen-%C3%B6ffentlich-gef%C3%B6rderten-berliner-kultureinrichtungen>
+* data set containg visitor information: [https://daten.berlin.de/datensaetze/besuchszahlen-öffentlich-geförderten-berliner-kultureinrichtungen](https://daten.berlin.de/datensaetze/besuchszahlen-%C3%B6ffentlich-gef%C3%B6rderten-berliner-kultureinrichtungen)
 
 The second link actually gives access to two data sets containing visitor information; one for 2011/12 and one for 2013/14.
 
 \
-All data is provided in .XLS format (Microsoft Excel). As this format is really awkward to work with we transformed the tables into .CSV and subsequently into .JSON files manually. Afterwards we made them availible in our github repository and simply fetch them.
+All data is provided in .XLS format (Microsoft Excel). As this format is really awkward to work with we transformed the tables into .CSV and subsequently into .JSON files manually. Afterwards we made them availible in our github repository.
+
+\
+Additionally we build a data set containing postcodes and their respective district(s) ourselves.
 # %% [markdown]
 ### Preprocessing:
 
 Before we can visualize the data we need to do some preprocessing.
 
 \
-First of all we strip the postcode from the adress of each facility and use it to order the facility into its district. As some postcodes overlap multiple different districts. For these cases we opted to count the facility as being “in” all the found districts. This decision arose from the motivation that facilities with a postcode spaning multiple districts should be availible for residence of these districts and therefore be counted for all of them.
+First of all we extracted the postcode from the adress of each facility and use it to order the facility into its district(s). As some postcodes overlap multiple different districts. For these cases we opted to count the facility as being “in” all the found districts. This decision arose from the motivation that facilities with a postcode spaning multiple districts should be availible for residence of these districts and therefore be counted for all of them.
 
 \
 Secondly the visitor information is itemized by a lot of different features; paying vs. non-paying, female vs. male, children vs. adults. We decided to not include this itemization and simply use the overall number of visitors disregarding their properties. The only split that remains is the seperation by year.
@@ -77,6 +80,10 @@ var stats_13_14_json = await resp.json();
 # properties:
 #   run_on_load: true
 #   top_hidden: true
+<<<<<<< HEAD
+=======
+#   bottom_hidden: true
+>>>>>>> 2231fb4a8c22f033aef23051b3548f3eb64c67a5
 # ---%%
 function addr2plz(addr) {
     if (VERBOSE) {
@@ -194,12 +201,21 @@ function districtTransform() {
 
                 var obj_1 = {};
                 var obj_2 = {};
+<<<<<<< HEAD
 
                 const keys__1 = Object.keys(obj).filter(key => key.includes("__1"));
                 var nonConstantKeys = [];
 
                 for (var j = 0; j < keys__1.length; j++) {
 
+=======
+
+                const keys__1 = Object.keys(obj).filter(key => key.includes("__1"));
+                var nonConstantKeys = [];
+
+                for (var j = 0; j < keys__1.length; j++) {
+
+>>>>>>> 2231fb4a8c22f033aef23051b3548f3eb64c67a5
                     const keyShort = keys__1[j].substring(0, keys__1[j].indexOf("__1"));
 
                     nonConstantKeys.push(keyShort);
@@ -230,9 +246,15 @@ VERBOSE = false
 console.log(districtTransform());
 // console.log(missing)
 # %% [markdown]
+<<<<<<< HEAD
 Please take note that for some institution names in the “besuchzahlen…”- dataset, the containing district could **not** be determined programmatically (e.g. because the name could not be matched in the “standorte…”- dataset). For this prototype, these institutions were therefore excluded from our visualization.
 
 In the following, you can see the names of these institutions as listed in the “besuchzahlen…”- dataset.
+=======
+Please take note that for some facilities their district could **not** be determined programmatically (e.g. because the name from the visitor data set could not be matched in the positional data set). For this prototype, these institutions were therefore excluded from our visualization.
+
+In the following, you can see the names of these institutions as listed in the visitor dataset:
+>>>>>>> 2231fb4a8c22f033aef23051b3548f3eb64c67a5
 # %%--- [javascript]
 # properties:
 #   top_hidden: true
@@ -243,8 +265,13 @@ console.log(missing);
 # %%--- [javascript]
 # properties:
 #   run_on_load: true
+<<<<<<< HEAD
 #   top_hidden: true
 #   bottom_hidden: true
+=======
+#   bottom_hidden: true
+#   top_hidden: true
+>>>>>>> 2231fb4a8c22f033aef23051b3548f3eb64c67a5
 # ---%%
 var data = districtTransform();
 
@@ -285,10 +312,17 @@ years.forEach(function (year){
         var besuche = 0;
         if (typeof(attraction['Besuche_insgesamt']) == 'number') {
           besuche = attraction['Besuche_insgesamt'];
+<<<<<<< HEAD
         }
         else {
         	besuche = parseInt(attraction['Besuche_insgesamt'].replace(',', ''));
         }
+=======
+        }
+        else {
+        	besuche = parseInt(attraction['Besuche_insgesamt'].replace(',', ''));
+        }
+>>>>>>> 2231fb4a8c22f033aef23051b3548f3eb64c67a5
         if (besuche >= bin[0] && besuche < bin[1]) {
           count += 1;
         }
@@ -304,6 +338,7 @@ years.forEach(function (year){
   var dataset = {};
   dataset['labels'] = districts;
   dataset['datasets'] = []
+<<<<<<< HEAD
   district_bins.forEach((bin, index) => {
     var label = '';
     if (index == 0) {
@@ -324,6 +359,8 @@ years.forEach(function (year){
     }
     dataset['datasets'].push(bin_object);
   });
+=======
+>>>>>>> 2231fb4a8c22f033aef23051b3548f3eb64c67a5
 
   // add total bin
   var total_bin = [];
@@ -342,11 +379,47 @@ years.forEach(function (year){
     backgroundColor: CHART_COLORS['grey'],
   });
   
+<<<<<<< HEAD
+=======
+  district_bins.forEach((bin, index) => {
+    var label = '';
+    if (index == 0) {
+      label = '< ' + bins[index][1] + ' visitors';
+    }
+    else {
+      if (index == (district_bins.length - 1)) {
+        label = '> ' + bins[index][0] + ' visitors';
+      }
+      else {
+        label = bins[index][0] + ' - ' + bins[index][1] + ' visitors';
+      }
+    }
+    var bin_object = {
+      data: bin,
+      label: label,
+      backgroundColor: Object.values(CHART_COLORS)[index],
+    }
+    dataset['datasets'].push(bin_object);
+  });
+  
+>>>>>>> 2231fb4a8c22f033aef23051b3548f3eb64c67a5
   // add to data_all
   data_all[year] = dataset;
 });
 
 data_all
+<<<<<<< HEAD
+=======
+# %% [markdown]
+### Visualization:
+
+Below you can see the prototype of our visualization. For each district (on the x-axis) it is shown how many cultural facilities are availible (y-axis). The facilities are group by their number of visitors. For this we have three bins; less than 100.000 visitors (orange), between 100.000 and 300.000 visitors (pink) and more than 300.000 visitors (purple). Additionally it is also shown how many facilities are availible in total.
+
+Below the visualization you can select the year from which the data depicted originated from.
+
+\
+Note that the district “Marzahn-Hellersdorf” is missing in the visualization. Here we simply do not have any data. This is probably caused by the none-existance of cultural facilities. But it can also not be ruled out that the elimination of facilities where we couldn’t determine their position caused this.
+>>>>>>> 2231fb4a8c22f033aef23051b3548f3eb64c67a5
 # %%--- [javascript]
 # properties:
 #   run_on_load: true
@@ -376,6 +449,13 @@ const myChart = new Chart(canvas.getContext("2d"),
           },
           responsive: true,
           plugins: {
+<<<<<<< HEAD
+=======
+            title: {
+                display: true,
+                text: 'Number of availible and attractive cultural facilities for each district of Berlin'
+            },
+>>>>>>> 2231fb4a8c22f033aef23051b3548f3eb64c67a5
             legend: {
               position: 'right',
             }
