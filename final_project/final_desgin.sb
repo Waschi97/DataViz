@@ -10,29 +10,24 @@
 
 There is no need for any browser-based installations.
 # %% [css]
-starboard-cell {
+.cell-gutter, .cell-top {
     background-color: #fff;  /* Change this to #faf */
     
     /* Uncomment the next line for a dark mode effect! */
-    filter: invert() hue-rotate(180deg);
-    
+    filter: invert() hue-rotate(180deg); 
 }
 
-starboard-console-output{
-    filter: invert() hue-rotate(180deg);
+.cell-bottom {
+  /* Change background to #000 for full dark mode */
+  background-color: #fff
 }
 
-.cell-output-html {
-  background-color: #fff;
-  filter: invert(100%);
+starboard-notebook {
+  background-color: #000
 }
 
 .cells-container {
   	background-color: #000;
-}
-
-body {
-  background-color: #000;
 }
 # %%--- [javascript]
 # properties:
